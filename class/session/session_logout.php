@@ -8,6 +8,11 @@
     unset($_SESSION['log_03']);
     unset($_SESSION['log_04']);
 
+    unset($_SESSION['usu_01']);
+    unset($_SESSION['usu_02']);
+    unset($_SESSION['usu_03']);
+    unset($_SESSION['usu_04']);
+
     unset($_SESSION['seg_01']);
     unset($_SESSION['seg_02']);
     unset($_SESSION['seg_03']);

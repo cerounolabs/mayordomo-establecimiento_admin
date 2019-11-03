@@ -49,6 +49,10 @@
             case 'ESTABLECIMIENTOCARGO':
                 $result = 'ESTABLECIMIENTO TIPO CARGO';
                 break;
+
+            case 'ESTABLECIMIENTOPASTURA':
+                $result = 'ESTABLECIMIENTO TIPO PASTURA';
+                break;
             
             case 'ANIMALESTADO':
                 $result = 'ANIMAL TIPO ESTADO';
