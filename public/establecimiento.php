@@ -114,7 +114,7 @@
                                 <div class="row">
                                 	<h4 class="col-10 card-title">DETALLES</h4>
                                     <h4 class="col-2 card-title" style="text-align: right;">
-                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../public/dominiosub_crud.php?dominio=<?php echo $valueDominio; ?>&mode=C&dominio1=0&dominio2=0" role="button" title="Agregar"><i class="ti-plus"></i></a>
+                                        <a class="btn btn-info" style="background-color:#005ea6; border-color:#005ea6;"  href="../public/establecimiento_categoria_crud.php?codigo=<?php echo $workCodigo; ?>" role="button" title="Agregar"><i class="ti-plus"></i></a>
                                 	</h4>
 								</div>
                                 <div class="table-responsive">

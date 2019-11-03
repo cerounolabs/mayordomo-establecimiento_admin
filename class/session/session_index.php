@@ -20,12 +20,13 @@
         $_SESSION['usu_01'] = 'ADMINISTRADOR';
         $_SESSION['usu_02'] = 'MAYORDOMO';
         $_SESSION['usu_03'] = 'SISTEMA';
+        $_SESSION['usu_04'] = 1;
 
         $_SESSION['seg_04'] = 1;
 
         $_SESSION['expire'] = time() + 3600;
 
-        header('Location: ../../public/home.php');
+        header('Location: ../../public/configuracion.php');
     } else { 
         $dataJSON       = json_encode(
             array(

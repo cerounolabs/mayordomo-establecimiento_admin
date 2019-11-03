@@ -132,6 +132,13 @@
                                			<span class="hide-menu"> Home </span>
                                		</a>
                                	</li>
+
+								<li class="sidebar-item">
+                               		<a href="../public/configuracion.php" class="sidebar-link">
+                               			<i class="mdi mdi-home"></i>
+                               			<span class="hide-menu"> Configuraci&oacute;n </span>
+                               		</a>
+                               	</li>
                             </ul>
                         </li>
 
@@ -262,6 +269,13 @@
 											<a href="../public/dominio.php?dominio=ESTABLECIMIENTOCARGO" class="sidebar-link">
 												<i class="mdi mdi-parametro-establecimiento"></i>
 												<span class="hide-menu"> Tipo Cargo </span>
+											</a>
+										</li>
+
+										<li class="sidebar-item">
+											<a href="../public/dominio.php?dominio=ESTABLECIMIENTOPASTURA" class="sidebar-link">
+												<i class="mdi mdi-parametro-establecimiento"></i>
+												<span class="hide-menu"> Tipo Pastura </span>
 											</a>
 										</li>
 									</ul>
