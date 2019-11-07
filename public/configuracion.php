@@ -78,6 +78,24 @@
                 <!-- ============================================================== -->
                 <!-- basic table -->
                 <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="m-r-10">
+                                        <img src="../assets/images/senacsa_logo_menu.png" alt="user" width="60" class="rounded-circle" />
+                                    </div>
+                                    <div>
+                                        <h3 class="m-b-0"><?php echo $usu_05; ?></h3>
+                                        <span><?php echo date('l d F Y'); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
