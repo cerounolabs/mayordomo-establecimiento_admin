@@ -21,6 +21,7 @@
         $_SESSION['usu_02'] = 'MAYORDOMO';
         $_SESSION['usu_03'] = 'SISTEMA';
         $_SESSION['usu_04'] = 1;
+        $_SESSION['usu_05'] = 'ESTABLECIMIENTO LOS TOROS';
 
         $_SESSION['seg_04'] = 1;
 
