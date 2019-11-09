@@ -9,10 +9,12 @@
 
     $var01          = $_POST['var01'];
 	$var02          = $_POST['var02'];
-	$var03          = strtoupper($_POST['var03']);
+	$var03          = $_POST['var03'];
 	$var04          = $_POST['var04'];
 	$var05          = strtoupper($_POST['var05']);
-	$var06          = strtoupper($_POST['var06']);
+	$var06          = $_POST['var06'];
+	$var07          = $_POST['var07'];
+	$var08          = '';
 
     $work01         = $_POST['workCodigo'];
 	$work02         = $_POST['workModo'];
@@ -28,12 +30,14 @@
         $dataJSON = json_encode(
             array(
 				'tipo_estado_codigo'                        	=> $var01,
-				'tipo_pastura_codigo'                       	=> $var02,
+				'tipo_pastura1_codigo'                       	=> $var02,
+				'tipo_pastura2_codigo'                       	=> $var03,
 				'establecimiento_codigo'                    	=> $work01,
 				'establecimiento_seccion_codigo'            	=> $var04,
 				'establecimiento_potrero_nombre'            	=> $var05,
-				'establecimiento_potrero_hectarea'				=> $var03,
-				'establecimiento_potrero_observacion'			=> $var06,
+				'establecimiento_potrero_hectarea'				=> $var06,
+				'establecimiento_potrero_capacidad'				=> $var07,
+				'establecimiento_potrero_observacion'			=> $var08,
 				'auditoria_empresa_codigo'                  	=> $seg_04,
 				'auditoria_usuario'                         	=> $usu_03,
                 'auditoria_fecha_hora'                      	=> date('Y-m-d H:i:s'),
