@@ -28,6 +28,11 @@
     if($estPotreroJSON['code'] === 200){
         $porcCarga  = $porcCarga + 16.6666;
     }
+
+    $estLoteJSON        = get_curl('establecimiento/604/'.$usu_04);
+    if($estLoteJSON['code'] === 200){
+        $porcCarga  = $porcCarga + 16.6666;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -160,11 +165,11 @@
                             <div class="col-lg-2 col-md-3">
                                 <!-- Card -->
                                 <div class="card">
-                                    <img class="card-img-top img-responsive" src="../assets/images/icon/default.jpg" alt="Card image cap">
+                                    <img class="card-img-top" src="../assets/images/icon/default.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title">Poblaci&oacute;n</h4>
-                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getPoblacion();">Ver</a>
-                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setPoblacion();">Nuevo</a>
+                                        <h4 class="card-title">Loteos</h4>
+                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getLote();">Ver</a>
+                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setLote();">Nuevo</a>
                                     </div>
                                 </div>
                                 <!-- Card -->
@@ -175,11 +180,11 @@
                             <div class="col-lg-2 col-md-3">
                                 <!-- Card -->
                                 <div class="card">
-                                    <img class="card-img-top" src="../assets/images/icon/default.jpg" alt="Card image cap">
+                                    <img class="card-img-top img-responsive" src="../assets/images/icon/default.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title">Loteos</h4>
-                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getLote();">Ver</a>
-                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setLote();">Nuevo</a>
+                                        <h4 class="card-title">Poblaci&oacute;n</h4>
+                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getPoblacion();">Ver</a>
+                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setPoblacion();">Nuevo</a>
                                     </div>
                                 </div>
                                 <!-- Card -->
@@ -530,10 +535,12 @@
             '                <thead id="tableCodigo" class="">'+
             '                    <tr class="bg-light">'+
             '                        <th class="border-top-0" style="text-align:center;">ESTADO</th>'+
-            '                        <th class="border-top-0" style="text-align:center;">TIPO PASTURA</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">TIPO PASTURA 1</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">TIPO PASTURA 2</th>'+
             '                        <th class="border-top-0" style="text-align:center;">SECCIÓN</th>'+
             '                        <th class="border-top-0" style="text-align:center;">POTRERO</th>'+
-            '                        <th class="border-top-0" style="text-align:center;">HECTÁREA</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">DIMENSIÓN</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">CAPACIDAD RECEPTIVIDAD</th>'+
             '                    </tr>'+
             '                </thead>'+
             '                <tbody>'+
@@ -542,11 +549,13 @@
         foreach ($estPotreroJSON['data'] as $estPotreroKEY => $estPotreroVALUE) {
 ?>
             '                    <tr>'+
-            '                        <td><?php echo $estPotreroVALUE['tipo_estado_nombre']; ?></td>'+
-            '                        <td><?php echo $estPotreroVALUE['tipo_pastura_nombre']; ?></td>'+
-            '                        <td><?php echo $estPotreroVALUE['establecimiento_seccion_nombre']; ?></td>'+
-            '                        <td><?php echo $estPotreroVALUE['establecimiento_potrero_nombre']; ?></td>'+
-            '                        <td><?php echo $estPotreroVALUE['establecimiento_potrero_hectarea']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPotreroVALUE['tipo_estado_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPotreroVALUE['tipo_pastura1_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPotreroVALUE['tipo_pastura2_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPotreroVALUE['establecimiento_seccion_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPotreroVALUE['establecimiento_potrero_nombre']; ?></td>'+
+            '                        <td style="text-align:right;"><?php echo $estPotreroVALUE['establecimiento_potrero_hectarea']; ?></td>'+
+            '                        <td style="text-align:right;"><?php echo $estPotreroVALUE['establecimiento_potrero_capacidad']; ?></td>'+
             '                    </tr>'+
 <?php
         }
@@ -593,9 +602,9 @@
             '               </div>'+
             '               <div class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
-            '                       <label for="var02">TIPO PASTURA</label>'+
+            '                       <label for="var02">TIPO PASTURA 1</label>'+
             '                       <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
-            '                           <optgroup label="Tipo Pastura">'+
+            '                           <optgroup label="Tipo Pastura 1">'+
 <?php
     if ($dominioJSON['code'] === 200){
         foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
@@ -613,8 +622,22 @@
             '               </div>'+
             '               <div class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
-            '                       <label for="var03">HECTÁREA</label>'+
-            '                       <input id="var03" name="var03" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="HECTÁREA">'+
+            '                       <label for="var03">TIPO PASTURA 2</label>'+
+            '                       <select id="var03" name="var03" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           <optgroup label="Tipo Pastura 2">'+
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ESTABLECIMIENTOPASTURA'){
+?>
+            '                               <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre']; ?></option>'+
+<?php
+            }
+        }
+    }
+?>
+            '                           </optgroup>'+
+            '                       </select>'+
             '                   </div>'+
             '               </div>'+
             '           </div>'+
@@ -641,6 +664,107 @@
             '                   <div class="form-group">'+
             '                       <label for="var05">POTRERO</label>'+
             '                       <input id="var05" name="var05" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="POTRERO" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var06">DIMENSIÓN</label>'+
+            '                       <input id="var06" name="var06" class="form-control" type="number" step=".01" style="text-transform:uppercase; height:40px;" placeholder="HECTÁREA">'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var07">CAPACIDAD RECEPTIVDAD</label>'+
+            '                       <input id="var07" name="var07" class="form-control" type="number" step=".01" style="text-transform:uppercase; height:40px;" placeholder="HECTÁREA">'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '	    </div>'+
+            '	    <div class="modal-footer">'+
+            '           <button type="submit" class="btn btn-info">Guardar</button>'+
+            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	    </div>'+
+            '   </form>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function getLote(){
+            var html =
+            '<div class="modal-content">'+
+            '	<div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
+            '		<h4 class="modal-title" id="vcenter"> Loteos </h4>'+
+            '		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	</div>'+
+            '	<div class="modal-body" >'+
+            '        <div class="table-responsive">'+
+            '            <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
+            '                <thead id="tableCodigo" class="">'+
+            '                    <tr class="bg-light">'+
+            '                        <th class="border-top-0" style="text-align:center;">ESTADO</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">LOTE</th>'+
+            '                    </tr>'+
+            '                </thead>'+
+            '                <tbody>'+
+<?php
+    if ($estLoteJSON['code'] === 200){
+        foreach ($estLoteJSON['data'] as $estLoteKEY => $estLoteVALUE) {
+?>
+            '                    <tr>'+
+            '                        <td style="text-align:left;"><?php echo $estLoteVALUE['tipo_estado_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estLoteVALUE['establecimiento_lote_nombre']; ?></td>'+
+            '                    </tr>'+
+<?php
+        }
+    }
+?>
+            '                </tbody>'+
+            '            </table>'+
+            '        </div>'+
+            '	</div>'+
+            '	<div class="modal-footer">'+
+            '		<button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	</div>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function setLote(){
+            var html =
+            '<div class="modal-content">'+
+            '   <form id="form" data-parsley-validate method="post" action="../class/crud/establecimiento_lote.php">'+
+            '	    <div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
+            '		    <h4 class="modal-title" id="vcenter"> Loteos </h4>'+
+            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	    </div>'+
+            '	    <div class="modal-body" >'+
+            '           <div class="form-group">'+
+            '               <input id="workCodigo" name="workCodigo" value="<?php echo $usu_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+            '               <input id="workPage" name="workPage" value="configuracion" class="form-control" type="hidden" placeholder="Page" required readonly>'+
+            '           </div>'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var01">ESTADO</label>'+
+            '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           <optgroup label="Estado">'+
+            '                               <option value="1">HABILITADO</option>'+
+            '                               <option value="2">DESHABILITADO</option>'+
+            '                           </optgroup>'+
+            '                       </select>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-8">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var02">LOTE</label>'+
+            '                       <input id="var02" name="var02" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="LOTE" required>'+
             '                   </div>'+
             '               </div>'+
             '           </div>'+
