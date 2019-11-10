@@ -13,6 +13,7 @@
 
     $porcCarga          = 0;
     $dominioJSON        = get_curl('default/000');
+    $triDominioJSON     = get_curl('default/040/ANIMALESPECIECATEGORIASUBCATEGORIA');
     
     $estPersonaJSON     = get_curl('establecimiento/601/'.$usu_04);
     if($estPersonaJSON['code'] === 200){
@@ -31,6 +32,11 @@
 
     $estLoteJSON        = get_curl('establecimiento/604/'.$usu_04);
     if($estLoteJSON['code'] === 200){
+        $porcCarga  = $porcCarga + 16.6666;
+    }
+
+    $estPoblacionJSON        = get_curl('establecimiento/605/'.$usu_04);
+    if($estPoblacionJSON['code'] === 200){
         $porcCarga  = $porcCarga + 16.6666;
     }
 ?>
@@ -122,7 +128,7 @@
                                 <div class="card">
                                     <img class="card-img-top img-responsive" src="../assets/images/icon/default.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title">Usuarios</h4>
+                                        <h4 class="card-title">Usuario</h4>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getUsuario();">Ver</a>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setUsuario();">Nuevo</a>
                                     </div>
@@ -137,7 +143,7 @@
                                 <div class="card">
                                     <img class="card-img-top img-responsive" src="../assets/images/icon/default.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title">Secciones</h4>
+                                        <h4 class="card-title">Sección</h4>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getSeccion();">Ver</a>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setSeccion();">Nuevo</a>
                                     </div>
@@ -152,7 +158,7 @@
                                 <div class="card">
                                     <img class="card-img-top" src="../assets/images/icon/default.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title">Potreros</h4>
+                                        <h4 class="card-title">Potrero</h4>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getPotrero();">Ver</a>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setPotrero();">Nuevo</a>
                                     </div>
@@ -167,7 +173,7 @@
                                 <div class="card">
                                     <img class="card-img-top" src="../assets/images/icon/default.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title">Loteos</h4>
+                                        <h4 class="card-title">Loteo</h4>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getLote();">Ver</a>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setLote();">Nuevo</a>
                                     </div>
@@ -197,7 +203,7 @@
                                 <div class="card">
                                     <img class="card-img-top" src="../assets/images/icon/default.jpg" alt="Card image cap">
                                     <div class="card-body">
-                                        <h4 class="card-title">Ubicaci&oacute;n Animal</h4>
+                                        <h4 class="card-title">Ubicaci&oacute;n</h4>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getUbicacion();">Ver</a>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setUbicacion();">Nuevo</a>
                                     </div>
@@ -260,7 +266,7 @@
             var html =
             '<div class="modal-content">'+
             '	<div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
-            '		<h4 class="modal-title" id="vcenter"> Usuarios </h4>'+
+            '		<h4 class="modal-title" id="vcenter"> Usuario </h4>'+
             '		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	</div>'+
             '	<div class="modal-body" >'+
@@ -315,7 +321,7 @@
             '<div class="modal-content">'+
             '   <form id="form" data-parsley-validate method="post" action="../class/crud/establecimiento_persona.php">'+
             '	    <div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
-            '		    <h4 class="modal-title" id="vcenter"> Usuarios </h4>'+
+            '		    <h4 class="modal-title" id="vcenter"> Usuario </h4>'+
             '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	    </div>'+
             '	    <div class="modal-body" >'+
@@ -439,7 +445,7 @@
             var html =
             '<div class="modal-content">'+
             '	<div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
-            '		<h4 class="modal-title" id="vcenter"> Secciones </h4>'+
+            '		<h4 class="modal-title" id="vcenter"> Sección </h4>'+
             '		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	</div>'+
             '	<div class="modal-body" >'+
@@ -482,7 +488,7 @@
             '<div class="modal-content">'+
             '   <form id="form" data-parsley-validate method="post" action="../class/crud/establecimiento_seccion.php">'+
             '	    <div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
-            '		    <h4 class="modal-title" id="vcenter"> Secciones </h4>'+
+            '		    <h4 class="modal-title" id="vcenter"> Sección </h4>'+
             '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	    </div>'+
             '	    <div class="modal-body" >'+
@@ -526,7 +532,7 @@
             var html =
             '<div class="modal-content">'+
             '	<div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
-            '		<h4 class="modal-title" id="vcenter"> Potreros </h4>'+
+            '		<h4 class="modal-title" id="vcenter"> Potrero </h4>'+
             '		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	</div>'+
             '	<div class="modal-body" >'+
@@ -579,7 +585,7 @@
             '<div class="modal-content">'+
             '   <form id="form" data-parsley-validate method="post" action="../class/crud/establecimiento_potrero.php">'+
             '	    <div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
-            '		    <h4 class="modal-title" id="vcenter"> Potreros </h4>'+
+            '		    <h4 class="modal-title" id="vcenter"> Potrero </h4>'+
             '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	    </div>'+
             '	    <div class="modal-body" >'+
@@ -697,7 +703,7 @@
             var html =
             '<div class="modal-content">'+
             '	<div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
-            '		<h4 class="modal-title" id="vcenter"> Loteos </h4>'+
+            '		<h4 class="modal-title" id="vcenter"> Loteo </h4>'+
             '		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	</div>'+
             '	<div class="modal-body" >'+
@@ -740,7 +746,7 @@
             '<div class="modal-content">'+
             '   <form id="form" data-parsley-validate method="post" action="../class/crud/establecimiento_lote.php">'+
             '	    <div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
-            '		    <h4 class="modal-title" id="vcenter"> Loteos </h4>'+
+            '		    <h4 class="modal-title" id="vcenter"> Loteo </h4>'+
             '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	    </div>'+
             '	    <div class="modal-body" >'+
@@ -767,6 +773,208 @@
             '                       <input id="var02" name="var02" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="LOTE" required>'+
             '                   </div>'+
             '               </div>'+
+            '           </div>'+
+            '	    </div>'+
+            '	    <div class="modal-footer">'+
+            '           <button type="submit" class="btn btn-info">Guardar</button>'+
+            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	    </div>'+
+            '   </form>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function getPoblacion(){
+            var html =
+            '<div class="modal-content">'+
+            '	<div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
+            '		<h4 class="modal-title" id="vcenter"> Población </h4>'+
+            '		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	</div>'+
+            '	<div class="modal-body" >'+
+            '       <div class="table-responsive">'+
+            '            <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
+            '                <thead id="tableCodigo" class="">'+
+            '                    <tr class="bg-light">'+
+            '                        <th class="border-top-0" style="text-align:center;">ESTADO</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">PROPIETARIO</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">ORIGEN</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">RAZA</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">CATEGORÍA</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">PESO PROMEDIO</th>'+
+            '                    </tr>'+
+            '                </thead>'+
+            '                <tbody>'+
+<?php
+    if ($estPoblacionJSON['code'] === 200){
+        foreach ($estPoblacionJSON['data'] as $estPoblacionKEY => $estPoblacionVALUE) {
+?>
+            '                    <tr>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_estado_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
+            '                    </tr>'+
+<?php
+        }
+    }
+?>
+            '                </tbody>'+
+            '            </table>'+
+            '        </div>'+
+            '	</div>'+
+            '	<div class="modal-footer">'+
+            '		<button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	</div>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function setPoblacion(){
+            var html =
+            '<div class="modal-content">'+
+            '   <form id="form" data-parsley-validate method="post" action="../class/crud/establecimiento_poblacion.php">'+
+            '	    <div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
+            '		    <h4 class="modal-title" id="vcenter"> Población </h4>'+
+            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	    </div>'+
+            '	    <div class="modal-body" >'+
+            '           <div class="form-group">'+
+            '               <input id="workCodigo" name="workCodigo" value="<?php echo $usu_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+            '               <input id="workPage" name="workPage" value="configuracion" class="form-control" type="hidden" placeholder="Page" required readonly>'+
+            '           </div>'+
+            '           <div class="table-responsive">'+
+            '               <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
+            '                   <thead id="tableCodigo" class="">'+
+            '                       <tr class="bg-light">'+
+            '                           <th class="border-top-0" style="text-align:center;">PROPIETARIO</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">ORIGEN</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">RAZA</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">PESO PROMEDIO</th>'+
+            '                       </tr>'+
+            '                   </thead>'+
+            '                   <tbody>'+
+<?php
+    for ($i=0; $i < 5; $i++) {
+?>
+            '                       <tr>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var01_<?php echo $i; ?>" name="var01_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <optgroup label="Propietario">'+
+<?php
+    if ($estPersonaJSON['code'] === 200){
+        foreach ($estPersonaJSON['data'] as $estPersonaKEY => $estPersonaVALUE) {
+            if ($estPersonaVALUE['tipo_usuario_codigo'] === 49 && $estPersonaVALUE['tipo_estado_codigo'] === 1){
+?>
+            '                                       <option value="<?php echo $estPersonaVALUE['establecimiento_persona_codigo']; ?>"><?php echo $estPersonaVALUE['establecimiento_persona_completo']; ?></option>'+
+<?php
+            }
+        }
+    }
+?>
+            '                                   </optgroup>'+
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var02_<?php echo $i; ?>" name="var02_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <optgroup label="Origen">'+
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALORIGEN'){
+                $selected = '';
+
+                if ($dominioVALUE['tipo_codigo'] === 10){
+                    $selected = 'selected';
+                }
+?>
+            '                                       <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>" <?php echo $selected; ?>><?php echo $dominioVALUE['tipo_nombre']; ?></option>'+
+<?php
+            }
+        }
+    }
+?>
+            '                                   </optgroup>'+
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var03_<?php echo $i; ?>" name="var03_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <optgroup label="Raza">'+
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+            if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALRAZA'){
+                $selected = '';
+
+                if ($dominioVALUE['tipo_codigo'] === 39){
+                    $selected = 'selected';
+                }
+?>
+            '                                       <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>" <?php echo $selected; ?>><?php echo $dominioVALUE['tipo_nombre']; ?></option>'+
+<?php
+            }
+        }
+    }
+?>
+            '                                   </optgroup>'+
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var04_<?php echo $i; ?>" name="var04_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+<?php
+    if ($dominioJSON['code'] === 200){
+        foreach ($dominioJSON['data'] as $dominioCategoriaKEY => $dominioCategoriaVALUE) {
+            if ($dominioCategoriaVALUE['tipo_estado_codigo'] === 1 && $dominioCategoriaVALUE['tipo_dominio'] === 'ANIMALCATEGORIA'){
+?>
+            '                                   <optgroup label="<?php echo $dominioCategoriaVALUE['tipo_nombre']; ?>">'+
+<?php
+                if ($triDominioJSON['code'] === 200){
+                    foreach ($triDominioJSON['data'] as $triDominioKEY => $triDominioVALUE) {
+                        if ($triDominioVALUE['tipo_dominio2_codigo'] === $dominioCategoriaVALUE['tipo_codigo']){
+                            foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+                                if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALSUBCATEGORIA' && $dominioVALUE['tipo_codigo'] === $triDominioVALUE['tipo_dominio3_codigo']){
+?>
+            '                                       <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre']; ?></option>'+
+<?php
+                                }
+                            }
+                        }
+                    }
+                }
+?>
+            '                                   </optgroup>'+
+<?php
+            }
+        }
+    }
+?>
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var05_<?php echo $i; ?>" name="var05_<?php echo $i; ?>" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD">'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var06_<?php echo $i; ?>" name="var06_<?php echo $i; ?>" class="form-control" type="number" step=".001" style="text-transform:uppercase; height:40px;" placeholder="PESO PROMEDIO">'+
+            '                           </td>'+
+            '                       </tr>'+
+<?php
+    }
+?>
+            '                   </tbody>'+
+            '               </table>'+
             '           </div>'+
             '	    </div>'+
             '	    <div class="modal-footer">'+

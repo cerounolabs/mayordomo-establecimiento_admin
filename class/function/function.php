@@ -161,4 +161,28 @@
 
         return array($titulo, $titulo1, $titulo2, $dominio1, $dominio2);
     }
+
+    function getTitleTriDominio($var01){
+        $titulo     = '';
+        $titulo1    = '';
+        $titulo2    = '';
+        $titulo3    = '';
+        $dominio1   = '';
+        $dominio2   = '';
+        $dominio3   = '';
+
+        switch ($var01) {
+            case 'ANIMALESPECIECATEGORIASUBCATEGORIA':
+                $titulo     = 'ANIMAL ESPECIE / CATEGORIA / SUBCATEGORIA';
+                $titulo1    = 'ESPECIE';
+                $titulo2    = 'CATEGORIA';
+                $titulo3    = 'SUBCATEGORIA';
+                $dominio1   = 'ANIMALESPECIE';
+                $dominio2   = 'ANIMALCATEGORIA';
+                $dominio3   = 'ANIMALSUBCATEGORIA';
+                break;
+        }
+
+        return array($titulo, $titulo1, $titulo2, $titulo3, $dominio1, $dominio2, $dominio3);
+    }
 ?>
