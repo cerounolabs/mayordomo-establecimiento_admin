@@ -14,6 +14,7 @@
 		$var04          = $_POST['var04_'.$i];
 		$var05          = $_POST['var05_'.$i];
 		$var06          = $_POST['var06_'.$i];
+		$var07          = $_POST['var07_'.$i];
 
 		$work01         = $_POST['workCodigo'];
 		$work02         = $_POST['workModo'];
@@ -28,7 +29,6 @@
 		if (isset($var01) && isset($var02) && isset($var05) && $var05 > 0) {
 			$dataJSON = json_encode(
 				array(
-					'tipo_estado_codigo'                        => 'A',
 					'tipo_origen_codigo'						=> $var02,
 					'tipo_raza_codigo'							=> $var03,
 					'tipo_subcategoria_codigo'					=> $var04,
@@ -36,6 +36,7 @@
 					'persona_codigo'							=> $var01,
 					'establecimiento_poblacion_cantidad'		=> $var05,
 					'establecimiento_poblacion_peso'			=> $var06,
+					'establecimiento_poblacion_observacion'		=> $var07,
 					'auditoria_empresa_codigo'                  => $seg_04,
 					'auditoria_usuario'                         => $usu_03,
 					'auditoria_fecha_hora'                      => date('Y-m-d H:i:s'),
@@ -44,13 +45,13 @@
 			
 			switch($work02){
 				case 'C':
-					$result	= post_curl('default/605', $dataJSON);
+					$result	= post_curl('establecimiento/605', $dataJSON);
 					break;
 				case 'U':
-					$result	= put_curl('default/605/'.$work01, $dataJSON);
+					$result	= put_curl('establecimiento/605/'.$work01, $dataJSON);
 					break;
 				case 'D':
-					$result	= delete_curl('default/605/'.$work01, $dataJSON);
+					$result	= delete_curl('establecimiento/605/'.$work01, $dataJSON);
 					break;
 			}
 		}
