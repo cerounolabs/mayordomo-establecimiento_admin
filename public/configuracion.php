@@ -65,7 +65,7 @@
     <!-- ============================================================== -->
     <div id="main-wrapper">
 <?php
-    if ($porcCarga >= 100){
+    if ($porcCarga >= 83){
     	include '../include/menu.php';
     }
 ?>
@@ -677,13 +677,13 @@
             '               <div class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var06">DIMENSIÓN</label>'+
-            '                       <input id="var06" name="var06" class="form-control" type="number" step=".01" style="text-transform:uppercase; height:40px;" placeholder="HECTÁREA">'+
+            '                       <input id="var06" name="var06" class="form-control" type="number" step=".01" style="text-transform:uppercase; height:40px;" placeholder="DIMENSIÓN">'+
             '                   </div>'+
             '               </div>'+
             '               <div class="col-sm-12 col-md-4">'+
             '                   <div class="form-group">'+
             '                       <label for="var07">CAPACIDAD RECEPTIVDAD</label>'+
-            '                       <input id="var07" name="var07" class="form-control" type="number" step=".01" style="text-transform:uppercase; height:40px;" placeholder="HECTÁREA">'+
+            '                       <input id="var07" name="var07" class="form-control" type="number" step=".01" style="text-transform:uppercase; height:40px;" placeholder="CAPACIDAD RECEPTIVDAD">'+
             '                   </div>'+
             '               </div>'+
             '           </div>'+
@@ -798,7 +798,6 @@
             '            <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
             '                <thead id="tableCodigo" class="">'+
             '                    <tr class="bg-light">'+
-            '                        <th class="border-top-0" style="text-align:center;">ESTADO</th>'+
             '                        <th class="border-top-0" style="text-align:center;">PROPIETARIO</th>'+
             '                        <th class="border-top-0" style="text-align:center;">ORIGEN</th>'+
             '                        <th class="border-top-0" style="text-align:center;">RAZA</th>'+
@@ -806,6 +805,7 @@
             '                        <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
             '                        <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
             '                        <th class="border-top-0" style="text-align:center;">PESO PROMEDIO</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
             '                    </tr>'+
             '                </thead>'+
             '                <tbody>'+
@@ -814,14 +814,14 @@
         foreach ($estPoblacionJSON['data'] as $estPoblacionKEY => $estPoblacionVALUE) {
 ?>
             '                    <tr>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_estado_nombre']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['persona_completo']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_origen_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_raza_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_subcategoria_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_subcategoria_nombre']; ?></td>'+
+            '                        <td style="text-align:right;"><?php echo number_format($estPoblacionVALUE['establecimiento_poblacion_cantidad'], 0, ',', '.'); ?></td>'+
+            '                        <td style="text-align:right;"><?php echo number_format($estPoblacionVALUE['establecimiento_poblacion_peso_promedio'], 3, ',', '.').' KG'; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['establecimiento_poblacion_observacion']; ?></td>'+
             '                    </tr>'+
 <?php
         }
@@ -864,6 +864,7 @@
             '                           <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
             '                           <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
             '                           <th class="border-top-0" style="text-align:center;">PESO PROMEDIO</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
             '                       </tr>'+
             '                   </thead>'+
             '                   <tbody>'+
@@ -897,7 +898,7 @@
             if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALORIGEN'){
                 $selected = '';
 
-                if ($dominioVALUE['tipo_codigo'] === 10){
+                if ($dominioVALUE['tipo_codigo'] === 9){
                     $selected = 'selected';
                 }
 ?>
@@ -968,6 +969,9 @@
             '                           </td>'+
             '                           <td style="text-align:left;">'+
             '                               <input id="var06_<?php echo $i; ?>" name="var06_<?php echo $i; ?>" class="form-control" type="number" step=".001" style="text-transform:uppercase; height:40px;" placeholder="PESO PROMEDIO">'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var07_<?php echo $i; ?>" name="var07_<?php echo $i; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="OBSERVACIÓN">'+
             '                           </td>'+
             '                       </tr>'+
 <?php
