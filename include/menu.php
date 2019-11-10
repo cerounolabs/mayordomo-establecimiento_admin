@@ -350,12 +350,6 @@
 												<span class="hide-menu"> Tipo Categoria </span>
 											</a>
 										</li>
-										<li class="sidebar-item">
-											<a href="../public/dominiosub.php?dominio=ANIMALESPECIECATEGORIA" class="sidebar-link">
-												<i class="mdi mdi-parametro-animal"></i>
-												<span class="hide-menu"> Especie / Categoria </span>
-											</a>
-										</li>
                                         <li class="sidebar-item">
 											<a href="../public/dominio.php?dominio=ANIMALSUBCATEGORIA" class="sidebar-link">
 												<i class="mdi mdi-parametro-animal"></i>
@@ -363,9 +357,9 @@
 											</a>
 										</li>
 										<li class="sidebar-item">
-											<a href="../public/dominiosub.php?dominio=ANIMALCATEGORIASUBCATEGORIA" class="sidebar-link">
+											<a href="../public/dominiotri.php?dominio=ANIMALESPECIECATEGORIASUBCATEGORIA" class="sidebar-link">
 												<i class="mdi mdi-parametro-animal"></i>
-												<span class="hide-menu"> Categoria / SubCategoria </span>
+												<span class="hide-menu"> Especie / Categoria / SubCategoria </span>
 											</a>
 										</li>
 									</ul>
