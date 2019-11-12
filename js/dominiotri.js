@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var codigo		= document.getElementById('tableCodigo').className;	
-	var urlDominio	= 'https://www.cerouno.me/mayordomo_api/public/v1/default/040/dominio/'+codigo;
+	var urlDominio	= 'https://www.cerouno.me/mayordomo_api/public/v1/default/040/'+codigo;
 	
 	$('#tableLoad').DataTable({
 		processing	: true,
