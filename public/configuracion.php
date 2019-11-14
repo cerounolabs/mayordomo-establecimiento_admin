@@ -824,7 +824,7 @@
             '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['persona_completo']; ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_origen_nombre']; ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_raza_nombre']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_subcategoria_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_categoria_nombre']; ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['tipo_subcategoria_nombre']; ?></td>'+
             '                        <td style="text-align:right;"><?php echo number_format($estPoblacionVALUE['establecimiento_poblacion_cantidad'], 0, ',', '.'); ?></td>'+
             '                        <td style="text-align:right;"><?php echo number_format($estPoblacionVALUE['establecimiento_poblacion_peso_promedio'], 3, ',', '.').' KG'; ?></td>'+
@@ -877,7 +877,7 @@
             '                   </thead>'+
             '                   <tbody>'+
 <?php
-    for ($i=0; $i < 5; $i++) {
+    for ($i=0; $i < 10; $i++) {
 ?>
             '                       <tr>'+
             '                           <td style="text-align:left;">'+
