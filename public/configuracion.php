@@ -39,6 +39,11 @@
     if($estPoblacionJSON['code'] === 200){
         $porcCarga  = $porcCarga + 16.6666;
     }
+
+    $estUbicacionJSON        = get_curl('establecimiento/606/'.$usu_04);
+    if($estUbicacionJSON['code'] === 200){
+        $porcCarga  = $porcCarga + 16.6666;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -944,28 +949,14 @@
             '                           <td style="text-align:left;">'+
             '                               <select id="var04_<?php echo $i; ?>" name="var04_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
 <?php
-    if ($dominioJSON['code'] === 200){
-        foreach ($dominioJSON['data'] as $dominioCategoriaKEY => $dominioCategoriaVALUE) {
-            if ($dominioCategoriaVALUE['tipo_estado_codigo'] === 1 && $dominioCategoriaVALUE['tipo_dominio'] === 'ANIMALCATEGORIA'){
+    if ($triDominioJSON['code'] === 200){
+        foreach ($triDominioJSON['data'] as $triDominioKEY => $triDominioVALUE) {
+            foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+                if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALSUBCATEGORIA' && $dominioVALUE['tipo_codigo'] === $triDominioVALUE['tipo_dominio3_codigo']){
 ?>
-            '                                   <optgroup label="<?php echo $dominioCategoriaVALUE['tipo_nombre']; ?>">'+
+            '                                   <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $triDominioVALUE['tipo_dominio2_nombre'].' - '.$dominioVALUE['tipo_nombre']; ?></option>'+
 <?php
-                if ($triDominioJSON['code'] === 200){
-                    foreach ($triDominioJSON['data'] as $triDominioKEY => $triDominioVALUE) {
-                        if ($triDominioVALUE['tipo_dominio2_codigo'] === $dominioCategoriaVALUE['tipo_codigo']){
-                            foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-                                if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALSUBCATEGORIA' && $dominioVALUE['tipo_codigo'] === $triDominioVALUE['tipo_dominio3_codigo']){
-?>
-            '                                       <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $dominioVALUE['tipo_nombre']; ?></option>'+
-<?php
-                                }
-                            }
-                        }
-                    }
                 }
-?>
-            '                                   </optgroup>'+
-<?php
             }
         }
     }
@@ -980,6 +971,168 @@
             '                           </td>'+
             '                           <td style="text-align:left;">'+
             '                               <input id="var07_<?php echo $i; ?>" name="var07_<?php echo $i; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="OBSERVACIÓN">'+
+            '                           </td>'+
+            '                       </tr>'+
+<?php
+    }
+?>
+            '                   </tbody>'+
+            '               </table>'+
+            '           </div>'+
+            '	    </div>'+
+            '	    <div class="modal-footer">'+
+            '           <button type="submit" class="btn btn-info">Guardar</button>'+
+            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	    </div>'+
+            '   </form>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function getUbicacion(){
+            var html =
+            '<div class="modal-content">'+
+            '	<div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
+            '		<h4 class="modal-title" id="vcenter"> Ubicación </h4>'+
+            '		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	</div>'+
+            '	<div class="modal-body" >'+
+            '       <div class="table-responsive">'+
+            '            <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
+            '                <thead id="tableCodigo" class="">'+
+            '                    <tr class="bg-light">'+
+            '                        <th class="border-top-0" style="text-align:center;">POTRERO</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">LOTE</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">CATEGORÍA</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>'+
+            '                    </tr>'+
+            '                </thead>'+
+            '                <tbody>'+
+<?php
+    if ($estUbicacionJSON['code'] === 200){
+        foreach ($estUbicacionJSON['data'] as $estUbicacionKEY => $estUbicacionVALUE) {
+?>
+            '                    <tr>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['potrero_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['lote_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['tipo_categoria_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['tipo_subcategoria_nombre']; ?></td>'+
+            '                        <td style="text-align:right;"><?php echo number_format($estUbicacionVALUE['establecimiento_poblacion_cantidad'], 0, ',', '.'); ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['establecimiento_poblacion_observacion']; ?></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" role="button" class="btn btn-primary" title="Ver" onclick="setUbicacionId(this.id, 1);"><i class="ti-eye"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-success" title="Editar" onclick="setUbicacionId(this.id, 2);"><i class="ti-pencil"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-danger" title="Eliminar" onclick="setUbicacionId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                    </tr>'+
+<?php
+        }
+    }
+?>
+            '                </tbody>'+
+            '            </table>'+
+            '        </div>'+
+            '	</div>'+
+            '	<div class="modal-footer">'+
+            '		<button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	</div>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function setUbicacion(){
+            var html =
+            '<div class="modal-content">'+
+            '   <form id="form" data-parsley-validate method="post" action="../class/crud/establecimiento_ubicacion.php">'+
+            '	    <div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
+            '		    <h4 class="modal-title" id="vcenter"> Ubicación </h4>'+
+            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	    </div>'+
+            '	    <div class="modal-body" >'+
+            '           <div class="form-group">'+
+            '               <input id="workCodigo" name="workCodigo" value="<?php echo $usu_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+            '               <input id="workPage" name="workPage" value="configuracion" class="form-control" type="hidden" placeholder="Page" required readonly>'+
+            '           </div>'+
+            '           <div class="table-responsive">'+
+            '               <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
+            '                   <thead id="tableCodigo" class="">'+
+            '                       <tr class="bg-light">'+
+            '                           <th class="border-top-0" style="text-align:center;">POTRERO</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">LOTE</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
+            '                       </tr>'+
+            '                   </thead>'+
+            '                   <tbody>'+
+<?php
+    for ($i=0; $i < 10; $i++) {
+?>
+            '                       <tr>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var01_<?php echo $i; ?>" name="var01_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <optgroup label="Potrero">'+
+<?php
+        if ($estPotreroJSON['code'] === 200){
+            foreach ($estPotreroJSON['data'] as $estPotreroKEY => $estPotreroVALUE) {
+                if ($estPotreroVALUE['tipo_estado_codigo'] === 1){
+?>
+            '                                       <option value="<?php echo $estPotreroVALUE['establecimiento_potrero_codigo']; ?>"><?php echo $estPotreroVALUE['establecimiento_potrero_nombre']; ?></option>'+
+<?php
+                }
+            }
+        }
+?>
+            '                                   </optgroup>'+
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var02_<?php echo $i; ?>" name="var02_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <optgroup label="Lote">'+
+<?php
+        if ($estLoteJSON['code'] === 200){
+            foreach ($estLoteJSON['data'] as $estLoteKEY => $estLoteVALUE) {
+                if ($estLoteVALUE['tipo_estado_codigo'] === 1){
+?>
+            '                                       <option value="<?php echo $estLoteVALUE['establecimiento_lote_codigo']; ?>"><?php echo $estLoteVALUE['establecimiento_lote_nombre']; ?></option>'+
+<?php
+                }
+            }
+        }
+?>
+            '                                   </optgroup>'+
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var03_<?php echo $i; ?>" name="var03_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+<?php
+    if ($estPoblacionJSON['code'] === 200){
+        foreach ($estPoblacionJSON['data'] as $estPoblacionKEY => $estPoblacionVALUE) {
+            foreach ($triDominioJSON['data'] as $triDominioKEY => $triDominioVALUE) {
+                if ($triDominioVALUE['tipo_dominio2_codigo'] === $estPoblacionVALUE['tipo_categoria_codigo']){
+                    foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+                        if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALSUBCATEGORIA' && $dominioVALUE['tipo_codigo'] === $triDominioVALUE['tipo_dominio3_codigo'] && $dominioVALUE['tipo_codigo'] === $estPoblacionVALUE['tipo_subcategoria_codigo']){
+?>
+            '                                   <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $triDominioVALUE['tipo_dominio2_nombre'].' - '.$dominioVALUE['tipo_nombre']; ?></option>'+
+<?php
+                        }
+                    }
+                }
+            }
+        }
+    }
+?>
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var04_<?php echo $i; ?>" name="var04_<?php echo $i; ?>" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD">'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var05_<?php echo $i; ?>" name="var05_<?php echo $i; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="OBSERVACIÓN">'+
             '                           </td>'+
             '                       </tr>'+
 <?php
