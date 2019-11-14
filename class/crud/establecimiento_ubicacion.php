@@ -51,7 +51,37 @@
 					break;
 			}
 
-			$result	= json_decode($result, true);
+			$result			= json_decode($result, true);
+			$codUbicacion	= $result['codigo'];
+
+			if ($codUbicacion > 0){
+				$dataJSON = json_encode(
+					array(
+						'tipo_estado_codigo'							=> 1,
+						'establecimiento_ubicacion_codigo'				=> $codUbicacion,
+						'tipo_subcategoria_codigo'						=> $var03,
+						'establecimiento_ubicacion_detalle_cantidad'	=> $var04,
+						'establecimiento_ubicacion_detalle_observacion'	=> $var06,
+						'auditoria_empresa_codigo'                  	=> $seg_04,
+						'auditoria_usuario'                         	=> $usu_03,
+						'auditoria_fecha_hora'                      	=> date('Y-m-d H:i:s'),
+						'auditoria_ip'                              	=> $log_04
+					));
+				
+				switch($work02){
+					case 'C':
+						$result	= post_curl('establecimiento/607', $dataJSON);
+						break;
+					case 'U':
+						$result	= put_curl('establecimiento/607/'.$work01, $dataJSON);
+						break;
+					case 'D':
+						$result	= delete_curl('establecimiento/607/'.$work01, $dataJSON);
+						break;
+				}
+
+				$result	= json_decode($result, true);
+			}
 		}
 	}
 
