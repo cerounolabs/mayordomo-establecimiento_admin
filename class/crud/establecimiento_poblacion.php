@@ -7,7 +7,7 @@
     
     require '../../class/function/curl_api.php';
 
-	for ($i=0; $i < 5; $i++) { 
+	for ($i=0; $i < 10; $i++) { 
 		$var01          = $_POST['var01_'.$i];
 		$var02          = $_POST['var02_'.$i];
 		$var03          = $_POST['var03_'.$i];
