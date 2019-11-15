@@ -296,7 +296,7 @@
             '                        <th class="border-top-0" style="text-align:center;">DOCUMENTO</th>'+
             '                        <th class="border-top-0" style="text-align:center;">CÓDIGO SITRAP</th>'+
             '                        <th class="border-top-0" style="text-align:center;">CÓDIGO SIGOR</th>'+
-            '                        <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">&nbsp;</th>'+
             '                    </tr>'+
             '                </thead>'+
             '                <tbody>'+
@@ -312,7 +312,7 @@
             '                        <td><?php echo $estPersonaVALUE['establecimiento_persona_documento']; ?></td>'+
             '                        <td><?php echo $estPersonaVALUE['establecimiento_persona_codigo_sitrap']; ?></td>'+
             '                        <td><?php echo $estPersonaVALUE['establecimiento_persona_codigo_sigor']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" role="button" class="btn btn-primary" title="Ver" onclick="setUsuarioId(this.id, 1);"><i class="ti-eye"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-success" title="Editar" onclick="setUsuarioId(this.id, 2);"><i class="ti-pencil"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-danger" title="Eliminar" onclick="setUsuarioId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPersonaVALUE['establecimiento_persona_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setUsuarioId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -470,7 +470,7 @@
             '                    <tr class="bg-light">'+
             '                        <th class="border-top-0" style="text-align:center;">ESTADO</th>'+
             '                        <th class="border-top-0" style="text-align:center;">SECCIÓN</th>'+
-            '                        <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">&nbsp;</th>'+
             '                    </tr>'+
             '                </thead>'+
             '                <tbody>'+
@@ -481,7 +481,7 @@
             '                    <tr>'+
             '                        <td><?php echo $estSeccionVALUE['tipo_estado_nombre']; ?></td>'+
             '                        <td><?php echo $estSeccionVALUE['establecimiento_seccion_nombre']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" role="button" class="btn btn-primary" title="Ver" onclick="setSeccionId(this.id, 1);"><i class="ti-eye"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-success" title="Editar" onclick="setSeccionId(this.id, 2);"><i class="ti-pencil"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-danger" title="Eliminar" onclick="setSeccionId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estSeccionVALUE['establecimiento_seccion_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setSeccionId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -564,7 +564,7 @@
             '                        <th class="border-top-0" style="text-align:center;">POTRERO</th>'+
             '                        <th class="border-top-0" style="text-align:center;">DIMENSIÓN</th>'+
             '                        <th class="border-top-0" style="text-align:center;">CAPACIDAD RECEPTIVIDAD</th>'+
-            '                        <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">&nbsp;</th>'+
             '                    </tr>'+
             '                </thead>'+
             '                <tbody>'+
@@ -580,7 +580,7 @@
             '                        <td style="text-align:left;"><?php echo $estPotreroVALUE['establecimiento_potrero_nombre']; ?></td>'+
             '                        <td style="text-align:right;"><?php echo $estPotreroVALUE['establecimiento_potrero_hectarea']; ?></td>'+
             '                        <td style="text-align:right;"><?php echo $estPotreroVALUE['establecimiento_potrero_capacidad']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" role="button" class="btn btn-primary" title="Ver" onclick="setPotreroId(this.id, 1);"><i class="ti-eye"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-success" title="Editar" onclick="setPotreroId(this.id, 2);"><i class="ti-pencil"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-danger" title="Eliminar" onclick="setPotreroId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPotreroVALUE['establecimiento_potrero_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setPotreroId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -732,7 +732,7 @@
             '                    <tr class="bg-light">'+
             '                        <th class="border-top-0" style="text-align:center;">ESTADO</th>'+
             '                        <th class="border-top-0" style="text-align:center;">LOTE</th>'+
-            '                        <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">&nbsp;</th>'+
             '                    </tr>'+
             '                </thead>'+
             '                <tbody>'+
@@ -743,7 +743,7 @@
             '                    <tr>'+
             '                        <td style="text-align:left;"><?php echo $estLoteVALUE['tipo_estado_nombre']; ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estLoteVALUE['establecimiento_lote_nombre']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" role="button" class="btn btn-primary" title="Ver" onclick="setLoteId(this.id, 1);"><i class="ti-eye"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-success" title="Editar" onclick="setLoteId(this.id, 2);"><i class="ti-pencil"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-danger" title="Eliminar" onclick="setLoteId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estLoteVALUE['establecimiento_lote_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setLoteId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -827,7 +827,7 @@
             '                        <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
             '                        <th class="border-top-0" style="text-align:center;">PESO PROMEDIO</th>'+
             '                        <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
-            '                        <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">&nbsp;</th>'+
             '                    </tr>'+
             '                </thead>'+
             '                <tbody>'+
@@ -844,7 +844,7 @@
             '                        <td style="text-align:right;"><?php echo number_format($estPoblacionVALUE['establecimiento_poblacion_cantidad'], 0, ',', '.'); ?></td>'+
             '                        <td style="text-align:right;"><?php echo number_format($estPoblacionVALUE['establecimiento_poblacion_peso_promedio'], 3, ',', '.').' KG'; ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['establecimiento_poblacion_observacion']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" role="button" class="btn btn-primary" title="Ver" onclick="setPoblacionId(this.id, 1);"><i class="ti-eye"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-success" title="Editar" onclick="setPoblacionId(this.id, 2);"><i class="ti-pencil"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-danger" title="Eliminar" onclick="setPoblacionId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPoblacionVALUE['establecimiento_poblacion_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setPoblacionId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -1019,7 +1019,7 @@
             '                        <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
             '                        <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
             '                        <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
-            '                        <th class="border-top-0" style="text-align:center;">ACCI&Oacute;N</th>'+
+            '                        <th class="border-top-0" style="text-align:center;">&nbsp;</th>'+
             '                    </tr>'+
             '                </thead>'+
             '                <tbody>'+
@@ -1035,7 +1035,7 @@
             '                        <td style="text-align:left;"><?php echo $estUbicacionDetalleVALUE['tipo_subcategoria_nombre']; ?></td>'+
             '                        <td style="text-align:right;"><?php echo number_format($estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_cantidad'], 0, ',', '.'); ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_observacion']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" role="button" class="btn btn-primary" title="Ver" onclick="setUbicacionId(this.id, 1);"><i class="ti-eye"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-success" title="Editar" onclick="setUbicacionId(this.id, 2);"><i class="ti-pencil"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-danger" title="Eliminar" onclick="setUbicacionId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setUbicacionId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php   
             }
@@ -1190,6 +1190,43 @@
 
             $("#modalcontent").empty();
             $("#modalcontent").append(html);
+        }
+
+        function setUbicacionId(codigo){
+            var html =
+            '<div class="modal-content" style="background-color:transparent; border:0px">'+
+            '   <div class="col-12">'+
+            '       <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">'+
+            '           <span class="sr-only">Loading...</span>'+
+            '       </div>'+
+            '   </div>'+
+            '   <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">'+
+            '       <span class="sr-only">Loading...</span>'+
+            '   </div>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+
+            var xHTTP	= new XMLHttpRequest();
+            var xURL	= 'https://www.cerouno.me/mayordomo_api/public/v1/establecimiento/607/delete/' + codigo;
+            var xPARS   = JSON.stringify({
+                "auditoria_empresa_codigo": "<?php echo $seg_04; ?>",
+                "auditoria_usuario": "<?php echo $usu_03; ?>",
+                "auditoria_fecha_hora": "<?php echo date('Y-m-d H:i:s'); ?>",
+                "auditoria_ip": "<?php echo $log_04; ?>",
+            });
+
+            xHTTP.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var xJSON = JSON.parse(this.responseText);
+                    window.location.replace('../public/configuracion.php?code='+ xJSON.code + '&msg=' + xJSON.message); 
+                }
+            };
+            
+            xHTTP.open('PUT', xURL, true);
+            xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
+            xHTTP.send(xPARS);
         }
     </script>
 </body>
