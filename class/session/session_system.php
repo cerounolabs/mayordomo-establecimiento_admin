@@ -30,7 +30,6 @@
                 header('Location: ../../class/session/session_logout.php');
             } else {
                 setlocale(LC_MONETARY, 'es_PY');
-
                 
                 $urlAct             = $_SERVER['REQUEST_URI'];
                 $urlAnt             = substr($_SERVER['HTTP_REFERER'], 39);
