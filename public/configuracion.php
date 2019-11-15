@@ -1133,11 +1133,13 @@
             if ($estPoblacionVALUE['establecimiento_poblacion_cantidad'] > 0){
                 $aniUbicado = 0;
 
-                foreach ($estUbicacionJSON['data'] as $estUbicacionKEY => $estUbicacionVALUE) {
-                    if ($estUbicacionVALUE['establecimiento_ubicacion_cantidad'] > 0){
-                        foreach ($estUbicacionVALUE['detalle'] as $estUbicacionDetalleKEY => $estUbicacionDetalleVALUE) {
-                            if ($estUbicacionDetalleVALUE['tipo_categoria_codigo'] === $estPoblacionVALUE['tipo_categoria_codigo'] && $estUbicacionDetalleVALUE['tipo_subcategoria_codigo'] === $estPoblacionVALUE['tipo_subcategoria_codigo']) {
-                                $aniUbicado = $aniUbicado + $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_cantidad'];
+                if ($estUbicacionJSON['code'] === 200){
+                    foreach ($estUbicacionJSON['data'] as $estUbicacionKEY => $estUbicacionVALUE) {
+                        if ($estUbicacionVALUE['establecimiento_ubicacion_cantidad'] > 0){
+                            foreach ($estUbicacionVALUE['detalle'] as $estUbicacionDetalleKEY => $estUbicacionDetalleVALUE) {
+                                if ($estUbicacionDetalleVALUE['tipo_categoria_codigo'] === $estPoblacionVALUE['tipo_categoria_codigo'] && $estUbicacionDetalleVALUE['tipo_subcategoria_codigo'] === $estPoblacionVALUE['tipo_subcategoria_codigo']) {
+                                    $aniUbicado = $aniUbicado + $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_cantidad'];
+                                }
                             }
                         }
                     }
