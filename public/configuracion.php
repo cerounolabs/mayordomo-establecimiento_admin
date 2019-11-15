@@ -1026,7 +1026,8 @@
 <?php
     if ($estUbicacionJSON['code'] === 200){
         foreach ($estUbicacionJSON['data'] as $estUbicacionKEY => $estUbicacionVALUE) {
-            foreach ($estUbicacionVALUE['detalle'] as $estUbicacionDetalleKEY => $estUbicacionDetalleVALUE) {
+            if ($estUbicacionVALUE['establecimiento_ubicacion_cantidad'] > 0){
+                foreach ($estUbicacionVALUE['detalle'] as $estUbicacionDetalleKEY => $estUbicacionDetalleVALUE) {
 ?>
             '                    <tr>'+
             '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['establecimiento_potrero_nombre']; ?></td>'+
@@ -1038,6 +1039,7 @@
             '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setUbicacionId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php   
+                }
             }
         }
     }
@@ -1132,9 +1134,11 @@
                 $aniUbicado = 0;
 
                 foreach ($estUbicacionJSON['data'] as $estUbicacionKEY => $estUbicacionVALUE) {
-                    foreach ($estUbicacionVALUE['detalle'] as $estUbicacionDetalleKEY => $estUbicacionDetalleVALUE) {
-                        if ($estUbicacionDetalleVALUE['tipo_categoria_codigo'] === $estPoblacionVALUE['tipo_categoria_codigo'] && $estUbicacionDetalleVALUE['tipo_subcategoria_codigo'] === $estPoblacionVALUE['tipo_subcategoria_codigo']) {
-                            $aniUbicado = $aniUbicado + $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_cantidad'];
+                    if ($estUbicacionVALUE['establecimiento_ubicacion_cantidad'] > 0){
+                        foreach ($estUbicacionVALUE['detalle'] as $estUbicacionDetalleKEY => $estUbicacionDetalleVALUE) {
+                            if ($estUbicacionDetalleVALUE['tipo_categoria_codigo'] === $estPoblacionVALUE['tipo_categoria_codigo'] && $estUbicacionDetalleVALUE['tipo_subcategoria_codigo'] === $estPoblacionVALUE['tipo_subcategoria_codigo']) {
+                                $aniUbicado = $aniUbicado + $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_cantidad'];
+                            }
                         }
                     }
                 }
