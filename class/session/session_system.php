@@ -19,6 +19,7 @@
 //    $seg_01         = $_SESSION['seg_01'];
 //    $seg_02         = $_SESSION['seg_02'];
 //    $seg_03         = $_SESSION['seg_03'];
+    $seg_04         = $_SESSION['seg_04'];
 
     $expire         = $_SESSION['expire'];
 
