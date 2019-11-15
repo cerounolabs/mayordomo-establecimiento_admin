@@ -1016,17 +1016,19 @@
 <?php
     if ($estUbicacionJSON['code'] === 200){
         foreach ($estUbicacionJSON['data'] as $estUbicacionKEY => $estUbicacionVALUE) {
+            foreach ($estUbicacionVALUE['detalle'] as $estUbicacionDetalleKEY => $estUbicacionDetalleVALUE) {
 ?>
             '                    <tr>'+
-            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['potrero_nombre']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['lote_nombre']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['tipo_categoria_nombre']; ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['tipo_subcategoria_nombre']; ?></td>'+
-            '                        <td style="text-align:right;"><?php echo number_format($estUbicacionVALUE['establecimiento_poblacion_cantidad'], 0, ',', '.'); ?></td>'+
-            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['establecimiento_poblacion_observacion']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['establecimiento_potrero_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionVALUE['establecimiento_lote_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionDetalleVALUE['tipo_categoria_nombre']; ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionDetalleVALUE['tipo_subcategoria_nombre']; ?></td>'+
+            '                        <td style="text-align:right;"><?php echo number_format($estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_cantidad'], 0, ',', '.'); ?></td>'+
+            '                        <td style="text-align:left;"><?php echo $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_observacion']; ?></td>'+
             '                        <td style="text-align:center;"><a href="javascript:void(0)" role="button" class="btn btn-primary" title="Ver" onclick="setUbicacionId(this.id, 1);"><i class="ti-eye"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-success" title="Editar" onclick="setUbicacionId(this.id, 2);"><i class="ti-pencil"></i></a>&nbsp;<a href="javascript:void(0)" role="button" class="btn btn-danger" title="Eliminar" onclick="setUbicacionId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
-<?php
+<?php   
+            }
         }
     }
 ?>
@@ -1052,96 +1054,123 @@
             '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
             '	    </div>'+
             '	    <div class="modal-body" >'+
-            '           <div class="form-group">'+
-            '               <input id="workCodigo" name="workCodigo" value="<?php echo $usu_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
-            '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
-            '               <input id="workPage" name="workPage" value="configuracion" class="form-control" type="hidden" placeholder="Page" required readonly>'+
-            '           </div>'+
-            '           <div class="table-responsive">'+
-            '               <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
-            '                   <thead id="tableCodigo" class="">'+
-            '                       <tr class="bg-light">'+
-            '                           <th class="border-top-0" style="text-align:center;">POTRERO</th>'+
-            '                           <th class="border-top-0" style="text-align:center;">LOTE</th>'+
-            '                           <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
-            '                           <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
-            '                           <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
-            '                       </tr>'+
-            '                   </thead>'+
-            '                   <tbody>'+
-<?php
-    for ($i=0; $i < 10; $i++) {
-?>
-            '                       <tr>'+
-            '                           <td style="text-align:left;">'+
-            '                               <select id="var01_<?php echo $i; ?>" name="var01_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
-            '                                   <optgroup label="Potrero">'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var01">POTRERO</label>'+
+            '                       <select id="var01" name="var01" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           <optgroup label="Potrero">'+
 <?php
         if ($estPotreroJSON['code'] === 200){
             foreach ($estPotreroJSON['data'] as $estPotreroKEY => $estPotreroVALUE) {
                 if ($estPotreroVALUE['tipo_estado_codigo'] === 1){
 ?>
-            '                                       <option value="<?php echo $estPotreroVALUE['establecimiento_potrero_codigo']; ?>"><?php echo $estPotreroVALUE['establecimiento_potrero_nombre']; ?></option>'+
+            '                               <option value="<?php echo $estPotreroVALUE['establecimiento_potrero_codigo']; ?>"><?php echo $estPotreroVALUE['establecimiento_potrero_nombre']; ?></option>'+
 <?php
                 }
             }
         }
 ?>
-            '                                   </optgroup>'+
-            '                               </select>'+
-            '                           </td>'+
-            '                           <td style="text-align:left;">'+
-            '                               <select id="var02_<?php echo $i; ?>" name="var02_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
-            '                                   <optgroup label="Lote">'+
+            '                           </optgroup>'+
+            '                       </select>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var02">LOTE</label>'+
+            '                       <select id="var02" name="var02" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           <optgroup label="Lote">'+
 <?php
         if ($estLoteJSON['code'] === 200){
             foreach ($estLoteJSON['data'] as $estLoteKEY => $estLoteVALUE) {
                 if ($estLoteVALUE['tipo_estado_codigo'] === 1){
 ?>
-            '                                       <option value="<?php echo $estLoteVALUE['establecimiento_lote_codigo']; ?>"><?php echo $estLoteVALUE['establecimiento_lote_nombre']; ?></option>'+
+            '                               <option value="<?php echo $estLoteVALUE['establecimiento_lote_codigo']; ?>"><?php echo $estLoteVALUE['establecimiento_lote_nombre']; ?></option>'+
 <?php
                 }
             }
         }
 ?>
-            '                                   </optgroup>'+
-            '                               </select>'+
-            '                           </td>'+
-            '                           <td style="text-align:left;">'+
-            '                               <select id="var03_<?php echo $i; ?>" name="var03_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                           </optgroup>'+
+            '                       </select>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-4">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var03">UBICACIÓN</label>'+
+            '                       <input id="var03" name="var03" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="UBICACIÓN">'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="table-responsive">'+
+            '               <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
+            '                   <thead id="tableCodigo" class="">'+
+            '                       <tr class="bg-light">'+
+            '                           <th class="border-top-0" style="text-align:center;">CATEGORÍA</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">CANTIDAD NO UBICADO</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">CANTIDAD A UBICAR</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
+            '                       </tr>'+
+            '                   </thead>'+
+            '                   <tbody>'+
 <?php
     if ($estPoblacionJSON['code'] === 200){
+        $index = 1;
         foreach ($estPoblacionJSON['data'] as $estPoblacionKEY => $estPoblacionVALUE) {
-            foreach ($triDominioJSON['data'] as $triDominioKEY => $triDominioVALUE) {
-                if ($triDominioVALUE['tipo_dominio2_codigo'] === $estPoblacionVALUE['tipo_categoria_codigo']){
-                    foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
-                        if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALSUBCATEGORIA' && $dominioVALUE['tipo_codigo'] === $triDominioVALUE['tipo_dominio3_codigo'] && $dominioVALUE['tipo_codigo'] === $estPoblacionVALUE['tipo_subcategoria_codigo']){
-?>
-            '                                   <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $triDominioVALUE['tipo_dominio2_nombre'].' - '.$dominioVALUE['tipo_nombre']; ?></option>'+
-<?php
+            if ($estPoblacionVALUE['establecimiento_poblacion_cantidad'] > 0){
+                $aniUbicado = 0;
+
+                foreach ($estUbicacionJSON['data'] as $estUbicacionKEY => $estUbicacionVALUE) {
+                    foreach ($estUbicacionVALUE['detalle'] as $estUbicacionDetalleKEY => $estUbicacionDetalleVALUE) {
+                        if ($estUbicacionDetalleVALUE['tipo_categoria_codigo'] === $estPoblacionVALUE['tipo_categoria_codigo'] && $estUbicacionDetalleVALUE['tipo_subcategoria_codigo'] === $estPoblacionVALUE['tipo_subcategoria_codigo']) {
+                            $aniUbicado = $aniUbicado + $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_cantidad'];
                         }
                     }
                 }
-            }
-        }
-    }
+
+                $falUbicar = $estPoblacionVALUE['establecimiento_poblacion_cantidad'] - $aniUbicado;
+
+                if ($falUbicar > 0){
 ?>
+            '                       <tr>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var04_<?php echo $index; ?>" name="var04_<?php echo $index; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <option value="<?php echo $estPoblacionVALUE['tipo_categoria_codigo']; ?>"><?php echo $estPoblacionVALUE['tipo_categoria_nombre']; ?></option>'+
             '                               </select>'+
             '                           </td>'+
             '                           <td style="text-align:left;">'+
-            '                               <input id="var04_<?php echo $i; ?>" name="var04_<?php echo $i; ?>" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD">'+
+            '                               <select id="var05_<?php echo $index; ?>" name="var05_<?php echo $index; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <option value="<?php echo $estPoblacionVALUE['tipo_subcategoria_codigo']; ?>"><?php echo $estPoblacionVALUE['tipo_subcategoria_nombre']; ?></option>'+
+            '                               </select>'+
             '                           </td>'+
             '                           <td style="text-align:left;">'+
-            '                               <input id="var05_<?php echo $i; ?>" name="var05_<?php echo $i; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="OBSERVACIÓN">'+
+            '                               <input id="var06_<?php echo $index; ?>" name="var06_<?php echo $index; ?>" value="<?php echo $falUbicar; ?>" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD" readonly>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var07_<?php echo $index; ?>" name="var07_<?php echo $index; ?>" value="0" min="0" max="<?php echo $falUbicar; ?>" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD">'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var08_<?php echo $index; ?>" name="var08_<?php echo $index; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="OBSERVACIÓN">'+
             '                           </td>'+
             '                       </tr>'+
 <?php
+                    $index = $index + 1;
+                }
+            }
+        }
     }
 ?>
             '                   </tbody>'+
             '               </table>'+
             '           </div>'+
             '	    </div>'+
+            '           <div class="form-group">'+
+            '               <input id="workCodigo" name="workCodigo" value="<?php echo $usu_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+            '               <input id="workPage" name="workPage" value="configuracion" class="form-control" type="hidden" placeholder="Page" required readonly>'+
+            '               <input id="workCount" name="workCount" value="<?php echo $index; ?>" class="form-control" type="hidden" placeholder="Page" required readonly>'+
+            '           </div>'+
             '	    <div class="modal-footer">'+
             '           <button type="submit" class="btn btn-info">Guardar</button>'+
             '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
