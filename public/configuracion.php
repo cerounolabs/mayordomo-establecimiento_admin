@@ -79,9 +79,9 @@
     <!-- ============================================================== -->
     <div id="main-wrapper">
 <?php
-//    if ($porcCarga === 100){
+    if ($porcCarga === 100){
     	include '../include/menu.php';
-//    }
+    }
 ?>
        
         <!-- Page wrapper  -->
