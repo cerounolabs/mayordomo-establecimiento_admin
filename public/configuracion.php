@@ -35,13 +35,22 @@
         $porcCarga  = $porcCarga + 16.6666;
     }
 
-    $estPoblacionJSON        = get_curl('establecimiento/605/'.$usu_04);
+    $estPoblacionJSON   = get_curl('establecimiento/605/'.$usu_04);
     if($estPoblacionJSON['code'] === 200){
         $porcCarga  = $porcCarga + 16.6666;
     }
 
-    $estUbicacionJSON        = get_curl('establecimiento/606/'.$usu_04);
+    $estUbicacionJSON   = get_curl('establecimiento/606/'.$usu_04);
+    $banUbicacion       = false;
     if($estUbicacionJSON['code'] === 200){
+        foreach ($estUbicacionJSON['data'] as $estUbicacionKEY => $estUbicacionVALUE) {
+            if ($estUbicacionVALUE['establecimiento_ubicacion_cantidad'] > 0){
+                $banUbicacion = true;
+            }
+        }
+    }
+
+    if ($banUbicacion === true){
         $porcCarga  = $porcCarga + 16.6666;
     }
 ?>
@@ -312,7 +321,7 @@
             '                        <td><?php echo $estPersonaVALUE['establecimiento_persona_documento']; ?></td>'+
             '                        <td><?php echo $estPersonaVALUE['establecimiento_persona_codigo_sitrap']; ?></td>'+
             '                        <td><?php echo $estPersonaVALUE['establecimiento_persona_codigo_sigor']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPersonaVALUE['establecimiento_persona_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setUsuarioId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPersonaVALUE['establecimiento_persona_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setDeleteId(this.id, 1)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -481,7 +490,7 @@
             '                    <tr>'+
             '                        <td><?php echo $estSeccionVALUE['tipo_estado_nombre']; ?></td>'+
             '                        <td><?php echo $estSeccionVALUE['establecimiento_seccion_nombre']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estSeccionVALUE['establecimiento_seccion_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setSeccionId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estSeccionVALUE['establecimiento_seccion_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setDeleteId(this.id, 2)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -580,7 +589,7 @@
             '                        <td style="text-align:left;"><?php echo $estPotreroVALUE['establecimiento_potrero_nombre']; ?></td>'+
             '                        <td style="text-align:right;"><?php echo $estPotreroVALUE['establecimiento_potrero_hectarea']; ?></td>'+
             '                        <td style="text-align:right;"><?php echo $estPotreroVALUE['establecimiento_potrero_capacidad']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPotreroVALUE['establecimiento_potrero_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setPotreroId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPotreroVALUE['establecimiento_potrero_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setDeleteId(this.id, 3)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -743,7 +752,7 @@
             '                    <tr>'+
             '                        <td style="text-align:left;"><?php echo $estLoteVALUE['tipo_estado_nombre']; ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estLoteVALUE['establecimiento_lote_nombre']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estLoteVALUE['establecimiento_lote_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setLoteId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estLoteVALUE['establecimiento_lote_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setDeleteId(this.id, 4)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -844,7 +853,7 @@
             '                        <td style="text-align:right;"><?php echo number_format($estPoblacionVALUE['establecimiento_poblacion_cantidad'], 0, ',', '.'); ?></td>'+
             '                        <td style="text-align:right;"><?php echo number_format($estPoblacionVALUE['establecimiento_poblacion_peso_promedio'], 3, ',', '.').' KG'; ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estPoblacionVALUE['establecimiento_poblacion_observacion']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPoblacionVALUE['establecimiento_poblacion_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setPoblacionId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estPoblacionVALUE['establecimiento_poblacion_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setDeleteId(this.id, 5)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php
         }
@@ -1036,7 +1045,7 @@
             '                        <td style="text-align:left;"><?php echo $estUbicacionDetalleVALUE['tipo_subcategoria_nombre']; ?></td>'+
             '                        <td style="text-align:right;"><?php echo number_format($estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_cantidad'], 0, ',', '.'); ?></td>'+
             '                        <td style="text-align:left;"><?php echo $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_observacion']; ?></td>'+
-            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setUbicacionId(this.id)";><i class="ti-trash"></i>&nbsp;</a></td>'+
+            '                        <td style="text-align:center;"><a href="javascript:void(0)" id="<?php echo $estUbicacionDetalleVALUE['establecimiento_ubicacion_detalle_codigo']; ?>" role="button" class="btn btn-danger" title="Eliminar" onclick="setDeleteId(this.id, 6)";><i class="ti-trash"></i>&nbsp;</a></td>'+
             '                    </tr>'+
 <?php   
                 }
@@ -1198,7 +1207,7 @@
             $("#modalcontent").append(html);
         }
 
-        function setUbicacionId(codigo){
+        function setDeleteId(codigo, tipo){
             var html =
             '<div class="modal-content" style="background-color:transparent; border:0px">'+
             '   <div class="col-12">'+
@@ -1214,8 +1223,35 @@
             $("#modalcontent").empty();
             $("#modalcontent").append(html);
 
+            var xURL = '';
+
+            switch (tipo) {
+                case 1:
+                    xURL = 'https://www.cerouno.me/mayordomo_api/public/v1/establecimiento/601/' + codigo;
+                    break;
+
+                case 2:
+                    xURL = 'https://www.cerouno.me/mayordomo_api/public/v1/default/602/' + codigo;
+                    break;
+
+                case 3:
+                    xURL = 'https://www.cerouno.me/mayordomo_api/public/v1/default/603/' + codigo;
+                    break;
+
+                case 4:
+                    xURL = 'https://www.cerouno.me/mayordomo_api/public/v1/establecimiento/604/' + codigo;
+                    break;
+
+                case 5:
+                    xURL = 'https://www.cerouno.me/mayordomo_api/public/v1/establecimiento/605/' + codigo;
+                    break;
+
+                case 6:
+                    xURL = 'https://www.cerouno.me/mayordomo_api/public/v1/establecimiento/607/' + codigo;
+                    break;
+            }
+
             var xHTTP	= new XMLHttpRequest();
-            var xURL	= 'https://www.cerouno.me/mayordomo_api/public/v1/establecimiento/607/delete/' + codigo;
             var xPARS   = JSON.stringify({
                 "auditoria_empresa_codigo": "<?php echo $seg_04; ?>",
                 "auditoria_usuario": "<?php echo $usu_03; ?>",
@@ -1230,7 +1266,7 @@
                 }
             };
             
-            xHTTP.open('PUT', xURL, true);
+            xHTTP.open('DELETE', xURL, true);
             xHTTP.setRequestHeader('Content-type', 'application/json;charset=UTF-8');
             xHTTP.send(xPARS);
         }
