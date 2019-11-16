@@ -10,6 +10,11 @@
         $codeRest       = 0;
         $msgRest        = '';
     }
+
+    $char01 = get_curl('grafico/001/'.$usu_04);
+    $char02 = get_curl('grafico/002/'.$usu_04);
+    $char03 = get_curl('grafico/003/'.$usu_04);
+    $char04 = get_curl('grafico/004/'.$usu_04);
 ?>
 
 <!DOCTYPE html>
@@ -92,6 +97,44 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">POBLACI&Oacute;N POR PROPIETARIO</h4>
+                                <div id="cantPoblacionxPropietario"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">POBLACI&Oacute;N POR ORIGEN</h4>
+                                <div id="cantPoblacionxOrigen"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">POBLACI&Oacute;N POR RAZA</h4>
+                                <div id="cantPoblacionxRaza"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">POBLACI&Oacute;N POR CATEGOR&Iacute;A</h4>
+                                <div id="cantPoblacionxCategoria"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
@@ -132,5 +175,122 @@
 <?php
     }
 ?>
+    <script>
+        $(function() {
+            'use strict';
+
+            var chart01 = c3.generate({
+                bindto: "#cantPoblacionxPropietario",
+                data: {
+                    columns: [
+<?php
+    if ($char01['code'] === 200){
+        foreach ($char01['data'] as $char01KEY => $char01VALUE) {
+    
+?>
+                        ["<?php echo $char01VALUE['persona_completo']; ?>", <?php echo $char01VALUE['establecimiento_poblacion_cantidad']; ?>],
+<?php
+        }
+    }
+?>
+                    ],
+                    type: "pie",
+                    onclick: function(o, n) { 
+                        console.log("onclick", o, n) 
+                    },
+                    onmouseover: function(o, n) { 
+                        console.log("onmouseover", o, n) 
+                    },
+                    onmouseout: function(o, n) { 
+                        console.log("onmouseout", o, n) 
+                    }
+                }
+            });
+
+            var chart02 = c3.generate({
+                bindto: "#cantPoblacionxOrigen",
+                data: {
+                    columns: [
+<?php
+    if ($char02['code'] === 200){
+        foreach ($char02['data'] as $char02KEY => $char02VALUE) {
+    
+?>
+                        ["<?php echo $char02VALUE['tipo_origen_nombre']; ?>", <?php echo $char02VALUE['establecimiento_poblacion_cantidad']; ?>],
+<?php
+        }
+    }
+?>
+                    ],
+                    type: "pie",
+                    onclick: function(o, n) { 
+                        console.log("onclick", o, n) 
+                    },
+                    onmouseover: function(o, n) { 
+                        console.log("onmouseover", o, n) 
+                    },
+                    onmouseout: function(o, n) { 
+                        console.log("onmouseout", o, n) 
+                    }
+                }
+            });
+
+            var chart03 = c3.generate({
+                bindto: "#cantPoblacionxRaza",
+                data: {
+                    columns: [
+<?php
+    if ($char03['code'] === 200){
+        foreach ($char03['data'] as $char03KEY => $char03VALUE) {
+    
+?>
+                        ["<?php echo $char03VALUE['tipo_raza_nombre']; ?>", <?php echo $char03VALUE['establecimiento_poblacion_cantidad']; ?>],
+<?php
+        }
+    }
+?>
+                    ],
+                    type: "pie",
+                    onclick: function(o, n) { 
+                        console.log("onclick", o, n) 
+                    },
+                    onmouseover: function(o, n) { 
+                        console.log("onmouseover", o, n) 
+                    },
+                    onmouseout: function(o, n) { 
+                        console.log("onmouseout", o, n) 
+                    }
+                }
+            });
+
+            var chart04 = c3.generate({
+                bindto: "#cantPoblacionxCategoria",
+                data: {
+                    columns: [
+<?php
+    if ($char04['code'] === 200){
+        foreach ($char04['data'] as $char04KEY => $char04VALUE) {
+    
+?>
+                        ["<?php echo $char04VALUE['tipo_categoria_nombre']; ?>", <?php echo $char04VALUE['establecimiento_poblacion_cantidad']; ?>],
+<?php
+        }
+    }
+?>
+                    ],
+                    type: "pie",
+                    onclick: function(o, n) { 
+                        console.log("onclick", o, n) 
+                    },
+                    onmouseover: function(o, n) { 
+                        console.log("onmouseover", o, n) 
+                    },
+                    onmouseout: function(o, n) { 
+                        console.log("onmouseout", o, n) 
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
