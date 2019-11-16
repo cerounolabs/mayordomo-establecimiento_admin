@@ -186,55 +186,7 @@
                                	</li>
                             </ul>
                         </li>
-
-						<li class="sidebar-item">
-                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                           		<i class="icon-Affiliate"></i>
-                           		<span class="hide-menu"> Persona </span>
-                           	</a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                            	<li class="sidebar-item">
-                               		<a href="../public/persona.php" class="sidebar-link">
-                               			<i class="mdi mdi-persona"></i>
-                               			<span class="hide-menu"> Persona </span>
-                               		</a>
-                               	</li>
-                            </ul>
-                        </li>
 						
-						<li class="sidebar-item">
-                        	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                           		<i class="icon-Globe"></i>
-                           		<span class="hide-menu"> Localidad </span>
-                           	</a>
-                            <ul aria-expanded="false" class="collapse first-level">
-                            	<li class="sidebar-item">
-                               		<a href="../public/pais.php" class="sidebar-link">
-                               			<i class="mdi mdi-localidad"></i>
-                               			<span class="hide-menu"> Pa&iacute;s </span>
-                               		</a>
-                               	</li>
-                                <li class="sidebar-item">
-                                	<a href="../public/departamento.php" class="sidebar-link">
-                                		<i class="mdi mdi-localidad"></i>
-                                		<span class="hide-menu"> Departamento </span>
-                                	</a>
-                                </li>
-                                <li class="sidebar-item">
-                                	<a href="../public/distrito.php" class="sidebar-link">
-                                		<i class="mdi mdi-localidad"></i>
-                                		<span class="hide-menu"> Distrito </span>
-                                	</a>
-                                </li>
-                                <li class="sidebar-item">
-                                	<a href="javascript:void(0)" class="sidebar-link">
-                                		<i class="mdi mdi-localidad"></i>
-                                		<span class="hide-menu"> Compa&ntilde;ia </span>
-                                	</a>
-                                </li>
-                            </ul>
-                        </li>
-
                         <li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Box-withFolders"></i>
@@ -287,6 +239,30 @@
                                    		<span class="hide-menu"> Localidad </span>
                                    	</a>
 									<ul aria-expanded="false" class="collapse second-level">
+										<li class="sidebar-item">
+											<a href="../public/pais.php" class="sidebar-link">
+												<i class="mdi mdi-parametro-localidad"></i>
+												<span class="hide-menu"> Pa&iacute;s </span>
+											</a>
+										</li>
+										<li class="sidebar-item">
+											<a href="../public/departamento.php" class="sidebar-link">
+												<i class="mdi mdi-parametro-localidad"></i>
+												<span class="hide-menu"> Departamento </span>
+											</a>
+										</li>
+										<li class="sidebar-item">
+											<a href="../public/distrito.php" class="sidebar-link">
+												<i class="mdi mdi-parametro-localidad"></i>
+												<span class="hide-menu"> Distrito </span>
+											</a>
+										</li>
+										<li class="sidebar-item">
+											<a href="javascript:void(0)" class="sidebar-link">
+												<i class="mdi mdi-parametro-localidad"></i>
+												<span class="hide-menu"> Compa&ntilde;ia </span>
+											</a>
+										</li>
 										<li class="sidebar-item">
 											<a href="../public/dominio.php?dominio=DISTRITORIESGO" class="sidebar-link">
 												<i class="mdi mdi-parametro-localidad"></i>
@@ -456,7 +432,7 @@
                                 </li>
                             </ul>
 						</li>
-						
+<!--
 						<li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Security-Block "></i>
@@ -573,6 +549,7 @@
 								</li>
                             </ul>
 						</li>
+-->
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

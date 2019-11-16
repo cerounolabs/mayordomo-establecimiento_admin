@@ -45,7 +45,7 @@ $(document).ready(function() {
 			{ targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
 			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
 			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
-			{ targets			: [10],	visible : true,	searchable : true,	orderData : [10, 0] }
+			{ targets			: [10],	visible : false,searchable : false,	orderData : [10, 0] }
 		],
 		columns		: [
 			{ data				: 'tipo_estado_nombre', name : 'tipo_estado_nombre'},

@@ -44,7 +44,7 @@ $(document).ready(function() {
 			{ targets			: [6],	visible : false,searchable : false,	orderData : [6, 0] },
 			{ targets			: [7],	visible : false,searchable : false,	orderData : [7, 0] },
 			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
-			{ targets			: [9],	visible : true,	searchable : true,	orderData : [9, 0] }
+			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] }
 		],
 		columns		: [
 			{ data				: 'departamento_codigo', name : 'departamento_codigo'},

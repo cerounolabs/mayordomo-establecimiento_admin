@@ -48,7 +48,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-5 align-self-center">
-                        <h4 class="page-title">Bienvenido <?php echo $usu_01.' '.$usu_02; ?></h4>
+                        <h4 class="page-title"></h4>
                         <div class="d-flex align-items-center"></div>
                     </div>
                     <div class="col-7 align-self-center">
@@ -76,8 +76,21 @@
                 <!-- ============================================================== -->
                 <!-- basic table -->
                 <div class="row">
-                    
-
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="m-r-10">
+                                        <img src="../assets/images/senacsa_logo_menu.png" alt="user" width="60" class="rounded-circle" />
+                                    </div>
+                                    <div>
+                                        <h3 class="m-b-0"><?php echo $usu_05; ?></h3>
+                                        <span><?php echo date('l d F Y'); ?></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
