@@ -46,7 +46,7 @@ $(document).ready(function() {
 			{ targets			: [8],	visible : false,searchable : false,	orderData : [8, 0] },
 			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
 			{ targets			: [10],	visible : false,searchable : false,	orderData : [10, 0] },
-			{ targets			: [11],	visible : true,	searchable : true,	orderData : [11, 0] }
+			{ targets			: [11],	visible : false,searchable : false,	orderData : [11, 0] }
 		],
 		columns		: [
 			{ data				: 'pais_codigo', name : 'pais_codigo'},

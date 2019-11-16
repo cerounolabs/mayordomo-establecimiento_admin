@@ -47,7 +47,7 @@ $(document).ready(function() {
 			{ targets			: [9],	visible : false,searchable : false,	orderData : [9, 0] },
 			{ targets			: [10],	visible : false,searchable : false,	orderData : [10, 0] },
 			{ targets			: [11],	visible : false,searchable : false,	orderData : [11, 0] },
-			{ targets			: [12],	visible : true,	searchable : true,	orderData : [12, 0] }
+			{ targets			: [12],	visible : false,searchable : false,	orderData : [12, 0] }
 		],
 		columns		: [
 			{ data				: 'distrito_codigo', name : 'distrito_codigo'},
