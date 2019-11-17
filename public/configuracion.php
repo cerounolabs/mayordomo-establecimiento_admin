@@ -930,7 +930,7 @@
             '                           <th class="border-top-0" style="text-align:center;">PROPIETARIO</th>'+
             '                           <th class="border-top-0" style="text-align:center;">ORIGEN</th>'+
             '                           <th class="border-top-0" style="text-align:center;">RAZA</th>'+
-            '                           <th class="border-top-0" style="text-align:center;">SUBCATEGORÍA</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">CATEGORÍA - SUBCATEGORÍA</th>'+
             '                           <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
             '                           <th class="border-top-0" style="text-align:center;">PESO PROMEDIO</th>'+
             '                           <th class="border-top-0" style="text-align:center;">OBSERVACIÓN</th>'+
@@ -1010,7 +1010,7 @@
             foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
                 if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALSUBCATEGORIA' && $dominioVALUE['tipo_codigo'] === $triDominioVALUE['tipo_dominio3_codigo']){
 ?>
-            '                                   <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $triDominioVALUE['tipo_dominio2_nombre'].' - '.$dominioVALUE['tipo_nombre']; ?></option>'+
+            '                                   <option value="<?php echo $triDominioVALUE['tipo_dominio2_codigo'].'_'.$dominioVALUE['tipo_codigo']; ?>"><?php echo $triDominioVALUE['tipo_dominio2_nombre'].' - '.$dominioVALUE['tipo_nombre']; ?></option>'+
 <?php
                 }
             }
@@ -1023,7 +1023,7 @@
             '                               <input id="var05_<?php echo $i; ?>" name="var05_<?php echo $i; ?>" class="form-control" type="number" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD">'+
             '                           </td>'+
             '                           <td style="text-align:left;">'+
-            '                               <input id="var06_<?php echo $i; ?>" name="var06_<?php echo $i; ?>" class="form-control" type="number" step=".001" style="text-transform:uppercase; height:40px;" placeholder="PESO PROMEDIO">'+
+            '                               <input id="var06_<?php echo $i; ?>" name="var06_<?php echo $i; ?>" class="form-control" type="number" step=".001" min="0" value="0" style="text-transform:uppercase; height:40px;" placeholder="PESO PROMEDIO">'+
             '                           </td>'+
             '                           <td style="text-align:left;">'+
             '                               <input id="var07_<?php echo $i; ?>" name="var07_<?php echo $i; ?>" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="OBSERVACIÓN">'+
@@ -1173,6 +1173,7 @@
             '                   </thead>'+
             '                   <tbody>'+
 <?php
+    $index = 0;
     if ($estPoblacionJSON['code'] === 200){
         $index = 1;
         foreach ($estPoblacionJSON['data'] as $estPoblacionKEY => $estPoblacionVALUE) {
@@ -1221,6 +1222,13 @@
                 }
             }
         }
+    } else {
+?>
+            '                       <tr>'+
+            '                           <td style="text-align:left;" colspan="5">'+
+            '                           </td>'+
+            '                       </tr>'+
+<?php      
     }
 ?>
             '                   </tbody>'+

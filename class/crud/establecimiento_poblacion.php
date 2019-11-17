@@ -11,7 +11,13 @@
 		$var01          = $_POST['var01_'.$i];
 		$var02          = $_POST['var02_'.$i];
 		$var03          = $_POST['var03_'.$i];
-		$var04          = $_POST['var04_'.$i];
+
+		if (isset($_POST['var04_'.$i])) {
+			$pos		= strpos($_POST['var04_'.$i], '_');
+			$var04_1	= substr($_POST['var04_'.$i], 0, $pos);
+			$var04_2	= substr($_POST['var04_'.$i], ($pos+1));
+		}
+		
 		$var05          = $_POST['var05_'.$i];
 		$var06          = $_POST['var06_'.$i];
 		$var07          = $_POST['var07_'.$i];
@@ -26,14 +32,15 @@
 		
 		$seg_04         = $_SESSION['seg_04'];
 
-		if (isset($var01) && isset($var02) && isset($var05) && $var05 > 0) {
+		if (isset($var01) && isset($var02) && isset($var05) && $var05 > 0 && $var06 > 0) {
 			$dataJSON = json_encode(
 				array(
 					'tipo_origen_codigo'						=> $var02,
 					'tipo_raza_codigo'							=> $var03,
-					'tipo_subcategoria_codigo'					=> $var04,
+					'tipo_categoria_codigo'						=> $var04_1,
+					'tipo_subcategoria_codigo'					=> $var04_2,
 					'establecimiento_codigo'                    => $work01,
-					'persona_codigo'							=> $var01,
+					'establecimiento_persona_codigo'			=> $var01,
 					'establecimiento_poblacion_cantidad'		=> $var05,
 					'establecimiento_poblacion_peso'			=> $var06,
 					'establecimiento_poblacion_observacion'		=> $var07,
@@ -54,10 +61,10 @@
 					$result	= delete_curl('establecimiento/605/'.$work01, $dataJSON);
 					break;
 			}
+
+			$result		= json_decode($result, true);
 		}
 	}
-	
-	$result		= json_decode($result, true);
 
 	header('Location: ../../public/'.$work03.'.php?code='.$result['code'].'&msg='.$result['message']);
 
