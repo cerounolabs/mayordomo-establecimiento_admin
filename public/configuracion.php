@@ -79,7 +79,7 @@
     <!-- ============================================================== -->
     <div id="main-wrapper">
 <?php
-    if ($porcCarga === 100){
+    if ($porcCarga > 83){
     	include '../include/menu.php';
     }
 ?>
