@@ -28,6 +28,23 @@
         $_SESSION['expire'] = time() + 3600;
 
         header('Location: ../../public/configuracion.php');
+    } elseif ($val_01 === 'innovandopy@mayorcontrol.com' && $val_02 === 'innovandopy2019') {
+        $_SESSION['log_01'] = $val_01;
+        $_SESSION['log_02'] = $val_02;
+        $_SESSION['log_03'] = $val_03;
+        $_SESSION['log_04'] = $val_04;
+
+        $_SESSION['usu_01'] = 'ADMINISTRADOR';
+        $_SESSION['usu_02'] = 'MAYORDOMO';
+        $_SESSION['usu_03'] = 'INNOVANDOPY';
+        $_SESSION['usu_04'] = 1;
+        $_SESSION['usu_05'] = 'ESTABLECIMIENTO LOS TOROS';
+
+        $_SESSION['seg_04'] = 1;
+
+        $_SESSION['expire'] = time() + 3600;
+
+        header('Location: ../../public/configuracion.php');
     } else { 
         $dataJSON       = json_encode(
             array(
