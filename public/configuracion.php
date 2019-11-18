@@ -1376,7 +1376,7 @@
             foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
                 if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALSUBCATEGORIA' && $dominioVALUE['tipo_codigo'] === $triDominioVALUE['tipo_dominio3_codigo'] && $triDominioVALUE['tipo_dominio2_codigo'] === 45){
 ?>
-            '                                   <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>"><?php echo $triDominioVALUE['tipo_dominio2_nombre'].' - '.$dominioVALUE['tipo_nombre']; ?></option>'+
+            '                                   <option value="<?php echo $triDominioVALUE['tipo_dominio2_codigo'].'_'.$dominioVALUE['tipo_codigo']; ?>"><?php echo $triDominioVALUE['tipo_dominio2_nombre'].' - '.$dominioVALUE['tipo_nombre']; ?></option>'+
 <?php
                 }
             }

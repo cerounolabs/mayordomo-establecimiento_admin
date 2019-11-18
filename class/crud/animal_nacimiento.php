@@ -11,7 +11,13 @@
 	$var02  = $_POST['var02'];
     $var03	= $_POST['var03'];
     $var04  = $_POST['var04'];
-    $var05  = $_POST['var05'];
+	
+	if (isset($_POST['var05'])) {
+		$pos		= strpos($_POST['var05'], '_');
+		$var05_1	= substr($_POST['var05'], 0, $pos);
+		$var05_2	= substr($_POST['var05'], ($pos+1));
+	}
+
     $var06  = trim(strtoupper($_POST['var06']));
     $var07  = $_POST['var07'];
     $var08	= $_POST['var08'];
@@ -28,13 +34,14 @@
 	
 	$seg_04	= $_SESSION['seg_04'];
 
-	if (isset($var01) && isset($var02) && isset($var03) && isset($var04) && isset($var05) && isset($var06) && isset($var07)) {
+	if (isset($var01) && isset($var02) && isset($var03) && isset($var04) && isset($var05_1) && isset($var05_2) && isset($var06) && isset($var07)) {
 		$dataJSON = json_encode(
 			array(
 				'tipo_estado_codigo'			            => $var01,
 				'tipo_origen_codigo'				        => $var03,
 				'tipo_raza_codigo'                          => $var04,
-				'tipo_subcategoria_codigo'			        => $var05,
+				'tipo_categoria_codigo'			        	=> $var05_1,
+				'tipo_subcategoria_codigo'			        => $var05_2,
                 'tipo_peso_codigo'		                    => $work04,
                 'establecimiento_codigo'		            => $work01,
                 'establecimiento_persona_codigo'		    => $var02,
