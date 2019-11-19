@@ -160,13 +160,13 @@
 						<li class="sidebar-item">
                         	<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                            		<i class="icon-Repeat"></i>
-                           		<span class="hide-menu"> Movimiento </span>
+                           		<span class="hide-menu"> Parte Diario </span>
                            	</a>
                             <ul aria-expanded="false" class="collapse first-level">
                                 <li class="sidebar-item">
-                               		<a href="javascript:void(0)" class="sidebar-link">
-                               			<i class="mdi mdi-establecimiento"></i>
-                               			<span class="hide-menu"> Movimiento </span>
+                               		<a href="../public/partediario.php" class="sidebar-link">
+                               			<i class="mdi mdi-partediario"></i>
+                               			<span class="hide-menu"> Consola </span>
                                		</a>
                                	</li>
                             </ul>
