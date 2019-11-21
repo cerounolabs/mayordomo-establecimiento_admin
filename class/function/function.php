@@ -58,8 +58,16 @@
                 $result = 'ANIMAL TIPO ESTADO';
                 break;
 
+            case 'ANIMALDONACION':
+                $result = 'ANIMAL TIPO DONACIÓN';
+                break;
+                
             case 'ANIMALORIGEN':
                 $result = 'ANIMAL TIPO ORIGEN';
+                break;
+
+            case 'ANIMALPESO':
+                $result = 'ANIMAL TIPO PESO';
                 break;
 
             case 'ANIMALRECUENTO':
