@@ -17,6 +17,10 @@
             case '2':
                 $result = date("YmdHisv");
                 break;
+
+            case '3':
+                $result = date("YmdHis");
+                break;
         }
         
         return $result;
