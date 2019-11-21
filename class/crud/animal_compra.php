@@ -6,6 +6,7 @@
     ob_start();
     
 	require '../../class/function/curl_api.php';
+	require '../../class/function/function.php';
 	
 	$var01	= trim(strtoupper($_POST['var01']));
 	$var02  = trim(strtoupper($_POST['var02']));
@@ -67,6 +68,7 @@
 					'tipo_subcategoria_codigo'			        => $var15,
 					'establecimiento_codigo'		        	=> $work01,
 					'establecimiento_persona_codigo'           	=> $var09,
+					'animal_codigo_movimiento'					=> getFechaHora(3),
 					'animal_compra_codigo'		                => $codigoCompra,
 					'animal_compra_cantidad'		    		=> $var12,
 					'animal_compra_peso'						=> $var13,
