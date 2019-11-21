@@ -45,7 +45,7 @@
                 'tipo_peso_codigo'		                    => $work04,
                 'establecimiento_codigo'		            => $work01,
                 'establecimiento_persona_codigo'		    => $var02,
-                'animal_codigo1_nacimiento'		            => $var06,
+                'animal_codigo_nacimiento'		            => $var06,
                 'animal_pesaje_fecha'		                => $var07,
                 'animal_pesaje_peso'		                => $var08,
                 'animal_observacion'                        => $var09,

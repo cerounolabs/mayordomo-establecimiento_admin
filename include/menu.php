@@ -290,10 +290,22 @@
 												<span class="hide-menu"> Tipo Estado </span>
 											</a>
 										</li>
+										<li class="sidebar-item">
+											<a href="../public/dominio.php?dominio=ANIMALDONACION" class="sidebar-link">
+												<i class="mdi mdi-parametro-animal"></i>
+												<span class="hide-menu"> Tipo Donacion </span>
+											</a>
+										</li>
                                         <li class="sidebar-item">
 											<a href="../public/dominio.php?dominio=ANIMALORIGEN" class="sidebar-link">
 												<i class="mdi mdi-parametro-animal"></i>
 												<span class="hide-menu"> Tipo Origen </span>
+											</a>
+										</li>
+										<li class="sidebar-item">
+											<a href="../public/dominio.php?dominio=ANIMALPESO" class="sidebar-link">
+												<i class="mdi mdi-parametro-animal"></i>
+												<span class="hide-menu"> Tipo Peso </span>
 											</a>
 										</li>
                                         <li class="sidebar-item">
