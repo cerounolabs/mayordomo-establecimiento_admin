@@ -62,6 +62,7 @@
 		if (isset($var12) && $var12 > 0 && $codigoCompra > 0) {
 			$dataJSON = json_encode(
 				array(
+					'tipo_estado_codigo'			            => 1,
 					'tipo_origen_codigo'			            => $var14,
 					'tipo_raza_codigo'				        	=> $var10,
 					'tipo_categoria_codigo'                   	=> $var11,
@@ -72,6 +73,7 @@
 					'animal_compra_codigo'		                => $codigoCompra,
 					'animal_compra_cantidad'		    		=> $var12,
 					'animal_compra_peso'						=> $var13,
+					'animal_compra_fecha'		    			=> $var08,
 					'auditoria_empresa_codigo'                  => $seg_04,
 					'auditoria_usuario'                         => $usu_03,
 					'auditoria_fecha_hora'                      => date('Y-m-d H:i:s'),
