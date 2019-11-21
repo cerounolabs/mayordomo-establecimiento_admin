@@ -118,7 +118,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title">Compra</h4>
                                         <a href="javascript:void(0)" class="btn btn-primary" style="float:left;" title="Ver" data-toggle="modal" data-target="#modaldiv" onclick="getNacimiento();">Ver</a>
-                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setNacimiento();">Nuevo</a>
+                                        <a href="javascript:void(0)" class="btn btn-primary" style="float:right;" title="Nuevo" data-toggle="modal" data-target="#modaldiv" onclick="setCompra();">Nuevo</a>
                                     </div>
                                 </div>
                                 <!-- Card -->
@@ -646,6 +646,164 @@
             '                        <textarea id="var07" name="var07" class="form-control" rows="3" style="text-transform:uppercase;"></textarea>'+
             '                    </div>'+
             '                </div>'+
+            '           </div>'+
+            '	    </div>'+
+            '	    <div class="modal-footer">'+
+            '           <button type="submit" class="btn btn-info">Guardar</button>'+
+            '		    <button type="button" class="btn btn-dark" data-dismiss="modal">Cerrar</button>'+
+            '	    </div>'+
+            '   </form>'+
+            '</div>';
+
+            $("#modalcontent").empty();
+            $("#modalcontent").append(html);
+        }
+
+        function setCompra(){
+            var html =
+            '<div class="modal-content">'+
+            '   <form id="form" data-parsley-validate method="post" action="../class/crud/animal_compra.php">'+
+            '	    <div class="modal-header" style="color:#fff; background: linear-gradient(to right, rgba(164,179,87,1) 0%, rgba(33,98,22,1) 100%);">'+
+            '		    <h4 class="modal-title" id="vcenter"> Compra </h4>'+
+            '		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>'+
+            '	    </div>'+
+            '	    <div class="modal-body" >'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var01">CHOFER</label>'+
+            '                       <input id="var01" name="var01" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="CHOFER" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var02">NRO CHAPA</label>'+
+            '                       <input id="var02" name="var02" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NRO CHAPA" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var03">ENTREGADO POR</label>'+
+            '                       <input id="var03" name="var03" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="ENTREGADO POR" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var04">RECIBIDO POR</label>'+
+            '                       <input id="var04" name="var04" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="RECIBIDO POR" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="row pt-3">'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var05">NRO COTA</label>'+
+            '                       <input id="var05" name="var05" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NRO COTA" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var06">NRO GUIA</label>'+
+            '                       <input id="var06" name="var06" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NRO GUIA" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var07">NRO FACTURA</label>'+
+            '                       <input id="var07" name="var07" class="form-control" type="text" style="text-transform:uppercase; height:40px;" placeholder="NRO FACTURA" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '               <div class="col-sm-12 col-md-3">'+
+            '                   <div class="form-group">'+
+            '                       <label for="var08">FECHA</label>'+
+            '                       <input id="var08" name="var08" class="form-control" type="date" style="text-transform:uppercase; height:40px;" placeholder="FECHA" required>'+
+            '                   </div>'+
+            '               </div>'+
+            '           </div>'+
+            '           <div class="table-responsive">'+
+            '               <table id="tableLoad" class="table v-middle" style="width: 100%;">'+
+            '                   <thead id="tableCodigo" class="">'+
+            '                       <tr class="bg-light">'+
+            '                           <th class="border-top-0" style="text-align:center;">PROPIETARIO</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">RAZA</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">CATEGORÍA</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">CANTIDAD</th>'+
+            '                           <th class="border-top-0" style="text-align:center;">PESO PROMEDIO</th>'+
+            '                       </tr>'+
+            '                   </thead>'+
+            '                   <tbody>'+
+<?php
+    if ($dominioJSON['code'] === 200){
+        $i = 0;
+        foreach ($dominioJSON['data'] as $dominio1KEY => $dominio1VALUE) {
+            if ($dominio1VALUE['tipo_estado_codigo'] === 1 && $dominio1VALUE['tipo_dominio'] === 'ANIMALCATEGORIA'){
+?>
+            '                       <tr>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var09_<?php echo $i; ?>" name="var09_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <optgroup label="Propietario">'+
+<?php
+                if ($estPersonaJSON['code'] === 200){
+                    foreach ($estPersonaJSON['data'] as $estPersonaKEY => $estPersonaVALUE) {
+                        if ($estPersonaVALUE['tipo_usuario_codigo'] === 49 && $estPersonaVALUE['tipo_estado_codigo'] === 1){
+?>
+            '                                       <option value="<?php echo $estPersonaVALUE['establecimiento_persona_codigo']; ?>"><?php echo $estPersonaVALUE['establecimiento_persona_completo']; ?></option>'+
+<?php
+                        }
+                    }
+                }
+?>
+            '                                   </optgroup>'+
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var10_<?php echo $i; ?>" name="var10_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <optgroup label="Raza">'+
+<?php
+                if ($dominioJSON['code'] === 200){
+                    foreach ($dominioJSON['data'] as $dominioKEY => $dominioVALUE) {
+                        if ($dominioVALUE['tipo_estado_codigo'] === 1 && $dominioVALUE['tipo_dominio'] === 'ANIMALRAZA'){
+                            $selected = '';
+
+                            if ($dominioVALUE['tipo_codigo'] === 39){
+                                $selected = 'selected';
+                            }
+?>
+            '                                       <option value="<?php echo $dominioVALUE['tipo_codigo']; ?>" <?php echo $selected; ?>><?php echo $dominioVALUE['tipo_nombre']; ?></option>'+
+<?php
+                        }
+                    }
+                }
+?>
+            '                                   </optgroup>'+
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <select id="var11_<?php echo $i; ?>" name="var11_<?php echo $i; ?>" class="select2 form-control custom-select" style="width:100%; height:40px;">'+
+            '                                   <option value="<?php echo $dominio1VALUE['tipo_codigo']; ?>"><?php echo $dominio1VALUE['tipo_nombre']; ?></option>'+
+            '                               </select>'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var12_<?php echo $i; ?>" name="var12_<?php echo $i; ?>" class="form-control" type="number" min="0" style="text-transform:uppercase; height:40px;" placeholder="CANTIDAD">'+
+            '                           </td>'+
+            '                           <td style="text-align:left;">'+
+            '                               <input id="var13_<?php echo $i; ?>" name="var13_<?php echo $i; ?>" class="form-control" type="number" step=".001" value="0" min="0" style="text-transform:uppercase; height:40px;" placeholder="PESO PROMEDIO">'+
+            '                           </td>'+
+            '                       </tr>'+
+<?php
+                $i = $i + 1;
+            }
+        }
+    }
+?>
+            '                   </tbody>'+
+            '               </table>'+
+            '           </div>'+
+            '           <div class="form-group">'+
+            '               <input id="workCodigo" name="workCodigo" value="<?php echo $usu_04; ?>" class="form-control" type="hidden" placeholder="Codigo" required readonly>'+
+            '               <input id="workModo" name="workModo" value="C" class="form-control" type="hidden" placeholder="Modo" required readonly>'+
+            '               <input id="workPage" name="workPage" value="partediario" class="form-control" type="hidden" placeholder="Page" required readonly>'+
+            '               <input id="workPage" name="workCount" value="<?php echo $i; ?>" class="form-control" type="hidden" placeholder="Compra" required readonly>'+
             '           </div>'+
             '	    </div>'+
             '	    <div class="modal-footer">'+
